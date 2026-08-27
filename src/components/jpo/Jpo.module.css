@@ -1,0 +1,1536 @@
+.container{
+  width:min(100% - 64px,1420px);
+  margin-inline:auto;
+}
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.brand{
+  display:inline-flex;
+  flex-direction:column;
+  align-items:center;
+  color:var(--jpo-deep-purple);
+  line-height:1;
+}
+
+.brandName{
+  font-family:var(--font-display);
+  font-size:clamp(3.45rem,4.75vw,5.15rem);
+  font-weight:500;
+  line-height:.82;
+  letter-spacing:-.055em;
+}
+
+.brandSub{
+  margin-top:8px;
+  color:var(--jpo-ink);
+  font-family:var(--font-display);
+  font-size:.8rem;
+  line-height:1;
+  letter-spacing:.48em;
+}
+
+.tagline{
+  display:flex;
+  align-items:center;
+  gap:.65rem;
+  margin-top:.58rem;
+  font-family:var(--font-display);
+  font-size:.96rem;
+  font-style:italic;
+}
+
+.tagline:before,
+.tagline:after{
+  width:22px;
+  height:1px;
+  content:"";
+  background:var(--jpo-lavender);
+}
+
+.brandHeart{
+  margin-top:.35rem;
+  font-size:1.05rem;
+}
+
+/* =========================================================
+   BUTTON / PHONE
+   ========================================================= */
+
+.button{
+  display:inline-flex;
+  min-height:43px;
+  align-items:center;
+  justify-content:center;
+  gap:.65rem;
+  padding:.62rem 1.08rem;
+  border:0;
+  border-radius:5px;
+  color:#fff;
+  background:linear-gradient(
+    115deg,
+    var(--jpo-deep-purple),
+    #78308e
+  );
+  box-shadow:0 7px 18px rgba(81,32,109,.14);
+  font-size:.74rem;
+  font-weight:500;
+  text-transform:uppercase;
+  transition:.2s;
+}
+
+.button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 24px rgba(81,32,109,.22);
+}
+
+.phone{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  color:var(--jpo-deep-purple);
+  font-size:.85rem;
+  font-weight:600;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+
+.icon{
+  width:1.05rem;
+  height:1.05rem;
+  flex:none;
+  fill:none;
+  stroke:currentColor;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-width:1.8;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.header{
+  position:relative;
+  z-index:20;
+  padding:18px 0 0;
+}
+
+.headerGrid{
+  display:grid;
+  grid-template-columns:220px minmax(0,1fr) 190px;
+  align-items:start;
+  gap:22px;
+}
+
+.nav{
+  display:flex;
+  justify-content:center;
+  gap:clamp(1.6rem,2.6vw,3rem);
+  padding-top:19px;
+  white-space:nowrap;
+}
+
+.nav a{
+  position:relative;
+  font-size:.74rem;
+  font-weight:500;
+  text-transform:uppercase;
+}
+
+.nav a[aria-current="page"]{
+  color:var(--jpo-deep-purple);
+}
+
+.nav a[aria-current="page"]:after{
+  position:absolute;
+  right:0;
+  bottom:-10px;
+  left:0;
+  height:2px;
+  content:"";
+  background:var(--jpo-purple);
+}
+
+.headerActions{
+  display:grid;
+  justify-items:center;
+  gap:11px;
+}
+
+.headerActions .phone{
+  width:100%;
+  justify-content:center;
+  text-decoration:none;
+  text-underline-offset:0;
+}
+
+.mobileActions,
+.menuButton,
+.mobilePanel{
+  display:none;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero{
+  position:relative;
+  min-height:355px;
+}
+
+/*
+   LEFT FLOWERS
+
+   Keep the current larger size.
+   Keep the current vertical position.
+   Move ONLY horizontally back to the left edge.
+*/
+
+.hero:before{
+  position:absolute;
+  z-index:2;
+
+  top:-68px;
+  left:0;
+
+  width:375px;
+  height:1080px;
+
+  content:"";
+
+  background-image:url("/flowers-left.png");
+  background-repeat:no-repeat;
+  background-position:left top;
+  background-size:contain;
+
+  opacity:.96;
+
+  pointer-events:none;
+}
+
+.heroInner{
+  position:relative;
+  min-height:355px;
+  padding-top:23px;
+}
+
+.heroCopy{
+  position:relative;
+  z-index:3;
+  width:min(38%,500px);
+  margin-left:13%;
+}
+
+.heroCopy h1{
+  font-family:var(--font-display);
+  font-size:clamp(2.85rem,3.55vw,4.15rem);
+  font-weight:500;
+  line-height:1.02;
+  letter-spacing:-.035em;
+}
+
+.accent{
+  color:var(--jpo-purple);
+}
+
+.ornament{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:.78rem;
+  width:235px;
+  margin:1rem 0 .9rem;
+  color:var(--jpo-purple);
+}
+
+.ornament:before,
+.ornament:after{
+  width:78px;
+  height:1px;
+  content:"";
+  background:var(--jpo-lavender);
+}
+
+.heroCopy p{
+  max-width:350px;
+  font-size:.88rem;
+  line-height:1.72;
+}
+
+.heroCtas{
+  display:flex;
+  align-items:center;
+  gap:1.1rem;
+  margin-top:1rem;
+}
+
+/* =========================================================
+   HERO PHOTO
+   ========================================================= */
+
+.photoSlot{
+  position:absolute;
+  z-index:1;
+
+  top:-128px;
+  right:0;
+  bottom:-76px;
+
+  width:76%;
+
+  overflow:hidden;
+}
+
+.photoPlaceholder{
+  position:absolute;
+  inset:0;
+
+  background-image:url("/jpo-caregiver-hero.png");
+  background-repeat:no-repeat;
+  background-size:auto 100%;
+  background-position:right top;
+}
+
+.photoPlaceholder:after{
+  display:none;
+  content:none;
+}
+
+.photoFade{
+  position:absolute;
+  z-index:2;
+  inset:0;
+  pointer-events:none;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--jpo-cream) 0%,
+      rgba(251,244,235,.97) 7%,
+      rgba(251,244,235,.82) 16%,
+      rgba(251,244,235,.45) 27%,
+      rgba(251,244,235,.12) 36%,
+      transparent 45%
+    ),
+    linear-gradient(
+      0deg,
+      var(--jpo-cream) 0%,
+      rgba(251,244,235,.78) 5%,
+      rgba(251,244,235,.30) 14%,
+      transparent 28%
+    );
+}
+
+/* =========================================================
+   CARE CARDS
+   ========================================================= */
+
+.care{
+  position:relative;
+  z-index:5;
+  margin-top:-46px;
+  padding:0 0 36px;
+}
+
+.careHeading{
+  display:none;
+}
+
+.cardGrid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(16px,1.8vw,28px);
+  width:min(72%,900px);
+  margin:0 auto;
+}
+
+.card{
+  position:relative;
+  min-height:164px;
+  padding:15px 20px 14px;
+
+  border:1px solid rgba(255,255,255,.68);
+  border-radius:15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.26) 0%,
+      rgba(255,249,245,.15) 48%,
+      rgba(244,228,235,.11) 100%
+    );
+
+  box-shadow:
+    0 13px 30px rgba(68,43,50,.10),
+    0 3px 10px rgba(68,43,50,.045),
+    inset 0 1px 0 rgba(255,255,255,.82),
+    inset 1px 0 0 rgba(255,255,255,.28),
+    inset 0 -1px 0 rgba(255,255,255,.12);
+
+  -webkit-backdrop-filter:blur(21px) saturate(120%);
+  backdrop-filter:blur(21px) saturate(120%);
+
+  text-align:center;
+}
+
+.card:before{
+  position:absolute;
+  inset:1px;
+  border-radius:14px;
+  content:"";
+  pointer-events:none;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.20),
+      transparent 35%,
+      transparent 74%,
+      rgba(255,255,255,.045)
+    );
+}
+
+.cardIcon,
+.card h3,
+.miniOrnament,
+.card p{
+  position:relative;
+  z-index:1;
+}
+
+.cardIcon{
+  display:block;
+  width:47px;
+  height:47px;
+  margin:0 auto 5px;
+  color:var(--jpo-purple);
+}
+
+.card h3{
+  font-family:var(--font-display);
+  font-size:1.22rem;
+  font-weight:500;
+  line-height:1.08;
+}
+
+.miniOrnament{
+  margin:.3rem 0 .38rem;
+  color:var(--jpo-purple);
+  font-size:.8rem;
+}
+
+.card p{
+  max-width:230px;
+  margin-inline:auto;
+  font-size:.69rem;
+  line-height:1.52;
+}
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.homeCta{
+  position:relative;
+  z-index:7;
+  overflow:visible;
+
+  padding:10px 0 11px;
+
+  border-top:1px solid rgba(113,51,143,.06);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(248,238,240,.93),
+      rgba(242,231,240,.88) 58%,
+      rgba(248,240,238,.92)
+    );
+}
+
+.homeCta:before,
+.homeCta:after{
+  display:none;
+  content:none;
+}
+
+.homeCta .container{
+  position:relative;
+  z-index:2;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:2rem;
+}
+
+.homeCta h2{
+  font-family:var(--font-display);
+  font-size:clamp(1.7rem,2.15vw,2.3rem);
+  font-weight:500;
+  line-height:1;
+  white-space:nowrap;
+}
+
+.homeCta h2 em{
+  color:var(--jpo-purple);
+  font-weight:400;
+}
+
+.ctaOrnament{
+  display:none;
+}
+
+.ctaActions{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:1rem;
+}
+
+.ctaCall{
+  white-space:nowrap;
+  font-size:.84rem;
+}
+
+.ctaCall a{
+  color:var(--jpo-deep-purple);
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer{
+  position:relative;
+  z-index:6;
+
+  padding:14px 0 9px;
+
+  background:var(--jpo-footer);
+
+  overflow:hidden;
+}
+
+/* bottom-left flowers remain completely removed */
+
+.footer:before{
+  display:none;
+  content:none;
+}
+
+/* bottom-right flowers remain */
+
+.footer:after{
+  position:absolute;
+  z-index:0;
+
+  right:-8px;
+  bottom:-2px;
+
+  width:180px;
+  height:118px;
+
+  content:"";
+
+  background-image:url("/flowers-bottom-right.png");
+  background-repeat:no-repeat;
+  background-size:contain;
+  background-position:right bottom;
+
+  pointer-events:none;
+}
+
+.footer .container{
+  position:relative;
+  z-index:1;
+}
+
+.footerGrid{
+  display:grid;
+  grid-template-columns:.85fr 1.15fr 1.05fr 1.35fr .8fr;
+  gap:18px;
+  align-items:start;
+}
+
+.footerCol{
+  min-height:84px;
+  padding-left:20px;
+  border-left:1px solid rgba(81,32,109,.12);
+}
+
+.footerCol:first-child{
+  padding-left:0;
+  border-left:0;
+}
+
+.footerCol h3{
+  margin-bottom:.42rem;
+  color:var(--jpo-deep-purple);
+  font-size:.64rem;
+  font-weight:600;
+  text-transform:uppercase;
+}
+
+.footerCol p,
+.footerCol a{
+  font-size:.64rem;
+  line-height:1.62;
+}
+
+.quickLinks{
+  display:grid;
+  grid-template-columns:repeat(2,auto);
+  gap:.1rem 1rem;
+}
+
+.contactList{
+  display:grid;
+  gap:.23rem;
+}
+
+.contactRow{
+  display:grid;
+  grid-template-columns:18px 1fr;
+  gap:.45rem;
+  align-items:start;
+}
+
+.footerBrand{
+  display:flex;
+  justify-content:center;
+}
+
+.footerBrand .brandName{
+  font-family:var(--font-display);
+  font-size:3rem;
+  font-weight:500;
+  line-height:.82;
+  letter-spacing:-.055em;
+}
+
+.footerBrand .brandSub{
+  margin-top:8px;
+  font-size:.63rem;
+}
+
+.footerBrand .brandHeart{
+  margin-top:.25rem;
+  font-size:.9rem;
+}
+
+.legal{
+  display:flex;
+  justify-content:space-between;
+  margin-top:9px;
+  padding-top:8px;
+  border-top:1px solid rgba(81,32,109,.12);
+  font-size:.61rem;
+}
+
+.legalLinks{
+  display:flex;
+  gap:1.55rem;
+}
+
+/* =========================================================
+   PLACEHOLDER ROUTES
+   ========================================================= */
+
+.placeholderPage{
+  display:grid;
+  min-height:100vh;
+  place-items:center;
+  padding:32px;
+  background:var(--jpo-cream);
+  text-align:center;
+}
+
+.placeholderPage h1{
+  margin:.5rem 0;
+  font-family:var(--font-display);
+  font-size:clamp(2.5rem,7vw,5rem);
+  font-weight:500;
+}
+
+.placeholderPage a{
+  display:inline-block;
+  margin-top:1.5rem;
+  color:var(--jpo-purple);
+  text-decoration:underline;
+}
+
+/* =========================================================
+   MID-SIZE DESKTOP
+   ========================================================= */
+
+@media(max-width:1100px){
+
+  .container{
+    width:min(100% - 40px,1040px);
+  }
+
+  .headerGrid{
+    grid-template-columns:175px minmax(0,1fr) 175px;
+    gap:14px;
+  }
+
+  .brandName{
+    font-size:3.65rem;
+  }
+
+  .tagline{
+    font-size:.82rem;
+  }
+
+  .nav{
+    gap:1.35rem;
+  }
+
+  .nav a{
+    font-size:.66rem;
+  }
+
+  .heroCopy{
+    width:42%;
+    margin-left:13%;
+  }
+
+  .cardGrid{
+    width:74%;
+  }
+
+  .photoSlot{
+    width:76%;
+  }
+
+  .hero:before{
+    top:-64px;
+    left:0;
+
+    width:352px;
+    height:1050px;
+
+    background-size:contain;
+  }
+
+  .footer:after{
+    width:165px;
+    height:108px;
+  }
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media(max-width:900px){
+
+  .header{
+    padding-top:18px;
+  }
+
+  .headerGrid{
+    grid-template-columns:1fr auto;
+    align-items:center;
+  }
+
+  .nav,
+  .headerActions{
+    display:none;
+  }
+
+  .brand{
+    align-items:flex-start;
+  }
+
+  .tagline,
+  .brandHeart{
+    display:none;
+  }
+
+  .mobileActions{
+    display:flex;
+    grid-column:1/-1;
+    align-items:center;
+    gap:18px;
+  }
+
+  .menuButton{
+    display:grid;
+    width:46px;
+    height:46px;
+    place-items:center;
+    border:0;
+    background:transparent;
+    color:var(--jpo-ink);
+    cursor:pointer;
+  }
+
+  .menuLines,
+  .menuLines:before,
+  .menuLines:after{
+    display:block;
+    width:29px;
+    height:2px;
+    content:"";
+    background:currentColor;
+  }
+
+  .menuLines{
+    position:relative;
+  }
+
+  .menuLines:before{
+    position:absolute;
+    top:-9px;
+  }
+
+  .menuLines:after{
+    position:absolute;
+    top:9px;
+  }
+
+  .mobilePanel{
+    position:absolute;
+    z-index:30;
+    top:calc(100% + 10px);
+    right:20px;
+    left:20px;
+
+    display:grid;
+    gap:4px;
+
+    padding:16px;
+
+    border:1px solid rgba(255,255,255,.8);
+    border-radius:14px;
+
+    background:rgba(255,250,245,.9);
+
+    box-shadow:0 20px 50px rgba(36,24,30,.17);
+
+    -webkit-backdrop-filter:blur(18px);
+    backdrop-filter:blur(18px);
+  }
+
+  .mobilePanel[hidden]{
+    display:none;
+  }
+
+  .mobilePanel a{
+    padding:12px 15px;
+    border-radius:8px;
+  }
+
+  .mobilePanel a[aria-current="page"]{
+    color:var(--jpo-deep-purple);
+    background:rgba(113,51,143,.08);
+  }
+
+  .hero,
+  .heroInner{
+    min-height:535px;
+  }
+
+  .heroInner{
+    padding-top:36px;
+  }
+
+  .heroCopy{
+    width:57%;
+    margin-left:1%;
+  }
+
+  .heroCopy h1{
+    font-size:clamp(2.9rem,6.6vw,4.1rem);
+  }
+
+  .photoSlot{
+    top:-60px;
+    right:0;
+    bottom:-70px;
+    width:92%;
+  }
+
+  .photoPlaceholder{
+    background-size:auto 100%;
+    background-position:right top;
+  }
+
+  .hero:before{
+    top:-30px;
+    left:0;
+
+    width:278px;
+    height:915px;
+
+    background-size:contain;
+  }
+
+  .care{
+    margin-top:-40px;
+    padding-bottom:36px;
+  }
+
+  .cardGrid{
+    width:90%;
+  }
+
+  .footerGrid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .footerCol:nth-child(2),
+  .footerCol:nth-child(3),
+  .footerCol:nth-child(5){
+    display:none;
+  }
+
+  .homeCta .container{
+    flex-wrap:wrap;
+    gap:.8rem 1.4rem;
+  }
+
+  .footer:after{
+    width:150px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:767px){
+
+  .container{
+    width:min(100% - 32px,680px);
+  }
+
+  .headerGrid{
+    gap:8px;
+  }
+
+  .brandName{
+    font-size:3.25rem;
+  }
+
+  .brandSub{
+    margin-top:8px;
+    font-size:.7rem;
+  }
+
+  .mobileActions{
+    justify-content:space-between;
+  }
+
+  .button{
+    min-height:46px;
+    padding:.68rem .95rem;
+    font-size:.7rem;
+  }
+
+  .hero,
+  .heroInner{
+    min-height:620px;
+  }
+
+  .heroInner{
+    padding-top:30px;
+  }
+
+  .heroCopy{
+    width:100%;
+    margin-left:0;
+  }
+
+  .heroCopy h1{
+    max-width:530px;
+    font-size:clamp(2.75rem,11.5vw,4.05rem);
+  }
+
+  .ornament{
+    width:205px;
+    margin:1rem 0;
+  }
+
+  .heroCopy p{
+    position:relative;
+    z-index:4;
+    width:54%;
+    min-width:190px;
+    font-size:.84rem;
+    line-height:1.72;
+  }
+
+  .heroCtas{
+    position:absolute;
+    top:390px;
+    left:0;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:.9rem;
+  }
+
+  .photoSlot{
+    top:95px;
+    right:-20%;
+    bottom:0;
+    width:120%;
+  }
+
+  .photoPlaceholder{
+    background-size:auto 100%;
+    background-position:right top;
+  }
+
+  .photoFade{
+    background:
+      linear-gradient(
+        90deg,
+        var(--jpo-cream) 0%,
+        rgba(251,244,235,.94) 18%,
+        rgba(251,244,235,.62) 31%,
+        transparent 58%
+      ),
+      linear-gradient(
+        0deg,
+        var(--jpo-cream) 0%,
+        rgba(251,244,235,.52) 12%,
+        transparent 29%
+      );
+  }
+
+  .hero:before{
+    top:115px;
+    left:0;
+
+    width:218px;
+    height:810px;
+
+    background-size:contain;
+  }
+
+  .care{
+    margin-top:0;
+    padding:14px 0 25px;
+  }
+
+  .careHeading{
+    display:block;
+    margin-bottom:13px;
+    text-align:center;
+    font-family:var(--font-display);
+    font-size:2.15rem;
+    font-weight:500;
+  }
+
+  .cardGrid{
+    grid-template-columns:1fr;
+    width:100%;
+    gap:11px;
+  }
+
+  .card{
+    display:grid;
+    grid-template-columns:90px 1fr;
+    min-height:0;
+    align-items:center;
+    padding:18px;
+    text-align:left;
+  }
+
+  .cardIcon{
+    width:66px;
+    height:66px;
+    margin:0;
+  }
+
+  .card h3{
+    font-size:1.48rem;
+  }
+
+  .miniOrnament{
+    display:none;
+  }
+
+  .card p{
+    max-width:none;
+    margin-top:.4rem;
+    font-size:.78rem;
+  }
+
+  .homeCta{
+    padding:31px 0 36px;
+  }
+
+  .homeCta .container{
+    display:block;
+  }
+
+  .homeCta h2{
+    max-width:360px;
+    font-size:2.55rem;
+    white-space:normal;
+  }
+
+  .ctaOrnament{
+    display:block;
+    width:125px;
+    margin:.55rem 0 .7rem 25px;
+  }
+
+  .ctaActions{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:.9rem;
+  }
+
+  .footer{
+    padding-top:22px;
+  }
+
+  .footerGrid{
+    grid-template-columns:.75fr 1.25fr;
+    gap:10px;
+  }
+
+  .footerCol{
+    padding-left:18px;
+  }
+
+  .footerBrand{
+    display:flex;
+    justify-content:center;
+  }
+
+  .footerBrand .brandName{
+    font-size:3.1rem;
+  }
+
+  .footerBrand .brandSub{
+    margin-top:8px;
+  }
+
+  .footerBrand .tagline{
+    display:none;
+  }
+
+  .footer:after{
+    width:125px;
+    height:92px;
+  }
+
+  .legal{
+    gap:20px;
+    font-size:.61rem;
+  }
+
+  .legalLinks{
+    gap:1rem;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media(max-width:389px){
+
+  .container{
+    width:min(100% - 24px,360px);
+  }
+
+  .mobileActions{
+    flex-wrap:wrap;
+    gap:11px;
+  }
+
+  .mobileActions .button{
+    flex:1;
+  }
+
+  .hero,
+  .heroInner{
+    min-height:590px;
+  }
+
+  .heroCopy p{
+    width:62%;
+    font-size:.79rem;
+  }
+
+  .heroCtas{
+    top:375px;
+  }
+
+  .hero:before{
+    left:0;
+    width:198px;
+  }
+
+  .card{
+    grid-template-columns:70px 1fr;
+    padding:15px 13px;
+  }
+
+  .cardIcon{
+    width:56px;
+    height:56px;
+  }
+
+  .card h3{
+    font-size:1.27rem;
+  }
+
+  .homeCta h2{
+    font-size:2.22rem;
+  }
+
+  .footerGrid{
+    grid-template-columns:1fr;
+  }
+
+  .footerBrand{
+    justify-content:flex-start;
+  }
+
+  .footerCol{
+    padding:16px 0 0;
+    border-top:1px solid rgba(81,32,109,.13);
+    border-left:0;
+  }
+
+  .legal{
+    flex-direction:column;
+  }
+}
+
+/* =========================================================
+   SHORT LAPTOP / SHORT DESKTOP
+   ========================================================= */
+
+@media(min-width:1024px) and (max-height:800px){
+
+  .header{
+    padding-top:12px;
+  }
+
+  .headerGrid{
+    grid-template-columns:205px minmax(0,1fr) 180px;
+  }
+
+  .brandName{
+    font-size:3.4rem;
+  }
+
+  .brandSub{
+    margin-top:8px;
+    font-size:.72rem;
+  }
+
+  .tagline{
+    margin-top:.35rem;
+    font-size:.78rem;
+  }
+
+  .brandHeart{
+    margin-top:.22rem;
+    font-size:.9rem;
+  }
+
+  .nav{
+    padding-top:16px;
+  }
+
+  .headerActions{
+    gap:8px;
+  }
+
+  .headerActions .phone{
+    width:100%;
+    justify-content:center;
+    text-decoration:none;
+  }
+
+  .hero,
+  .heroInner{
+    min-height:315px;
+  }
+
+  .heroInner{
+    padding-top:14px;
+  }
+
+  .heroCopy{
+    width:min(38%,490px);
+  }
+
+  .heroCopy h1{
+    font-size:clamp(2.55rem,3.3vw,3.55rem);
+  }
+
+  .ornament{
+    width:220px;
+    margin:.72rem 0 .68rem;
+  }
+
+  .heroCopy p{
+    max-width:340px;
+    font-size:.8rem;
+    line-height:1.58;
+  }
+
+  .heroCtas{
+    margin-top:.72rem;
+  }
+
+  /* HERO IMAGE */
+
+  .photoSlot{
+    top:-122px;
+    right:0;
+    bottom:-62px;
+    width:76%;
+  }
+
+  .photoPlaceholder{
+    background-size:auto 100%;
+    background-position:right top;
+  }
+
+  /*
+     LEFT FLOWERS
+     Keep current 338px size.
+     Keep current top:-54px vertical position.
+     ONLY move horizontally back to the left edge.
+  */
+
+  .hero:before{
+    top:-54px;
+    left:0;
+
+    width:338px;
+    height:1005px;
+
+    background-position:left top;
+    background-size:contain;
+  }
+
+  .care{
+    margin-top:-42px;
+    padding-bottom:34px;
+  }
+
+  .cardGrid{
+    width:min(72%,900px);
+    gap:20px;
+  }
+
+  .card{
+    min-height:145px;
+    padding:12px 18px 11px;
+  }
+
+  .cardIcon{
+    width:42px;
+    height:42px;
+    margin-bottom:4px;
+  }
+
+  .card h3{
+    font-size:1.08rem;
+  }
+
+  .miniOrnament{
+    margin:.24rem 0 .3rem;
+    font-size:.72rem;
+  }
+
+  .card p{
+    font-size:.64rem;
+    line-height:1.46;
+  }
+
+  .homeCta{
+    padding:8px 0;
+  }
+
+  .homeCta .container{
+    gap:1.4rem;
+  }
+
+  .homeCta h2{
+    font-size:1.82rem;
+  }
+
+  .homeCta .button{
+    min-height:39px;
+    padding:.56rem .95rem;
+  }
+
+  .ctaCall{
+    font-size:.78rem;
+  }
+
+  .footer{
+    padding:10px 0 7px;
+  }
+
+  .footerGrid{
+    gap:14px;
+  }
+
+  .footerCol{
+    min-height:72px;
+    padding-left:16px;
+  }
+
+  .footerCol h3{
+    margin-bottom:.32rem;
+    font-size:.59rem;
+  }
+
+  .footerCol p,
+  .footerCol a{
+    font-size:.59rem;
+    line-height:1.5;
+  }
+
+  .footerBrand .brandName{
+    font-size:2.65rem;
+  }
+
+  .footerBrand .brandSub{
+    margin-top:8px;
+    font-size:.56rem;
+  }
+
+  .footer:after{
+    right:-6px;
+    bottom:-2px;
+    width:155px;
+    height:100px;
+  }
+
+  .legal{
+    margin-top:6px;
+    padding-top:6px;
+    font-size:.56rem;
+  }
+}
+
+/* =========================================================
+   VERY SHORT LAPTOP
+   ========================================================= */
+
+@media(min-width:1024px) and (max-height:720px){
+
+  .header{
+    padding-top:8px;
+  }
+
+  .brandName{
+    font-size:3.1rem;
+  }
+
+  .brandSub{
+    margin-top:8px;
+  }
+
+  .tagline{
+    font-size:.72rem;
+  }
+
+  .hero,
+  .heroInner{
+    min-height:290px;
+  }
+
+  .heroInner{
+    padding-top:10px;
+  }
+
+  .heroCopy h1{
+    font-size:clamp(2.35rem,3.05vw,3.2rem);
+  }
+
+  .heroCopy p{
+    font-size:.75rem;
+    line-height:1.5;
+  }
+
+  .photoSlot{
+    top:-114px;
+    right:0;
+    width:76%;
+  }
+
+  .photoPlaceholder{
+    background-size:auto 100%;
+    background-position:right top;
+  }
+
+  /*
+     Same rule here:
+     preserve size and vertical position.
+     Only restore it to the left edge.
+  */
+
+  .hero:before{
+    top:-50px;
+    left:0;
+
+    width:315px;
+    height:960px;
+
+    background-position:left top;
+    background-size:contain;
+  }
+
+  .card{
+    min-height:132px;
+    padding-top:10px;
+    padding-bottom:9px;
+  }
+
+  .cardIcon{
+    width:38px;
+    height:38px;
+  }
+
+  .card h3{
+    font-size:1rem;
+  }
+
+  .card p{
+    font-size:.6rem;
+  }
+
+  .homeCta{
+    padding:6px 0;
+  }
+
+  .homeCta h2{
+    font-size:1.68rem;
+  }
+
+  .footer{
+    padding-top:7px;
+  }
+
+  .footerCol{
+    min-height:64px;
+  }
+
+  .footer:after{
+    width:145px;
+    height:94px;
+  }
+}
