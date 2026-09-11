@@ -24,7 +24,7 @@
 }
 
 .brandSub{
-  margin-top:8px;
+  margin-top:13px;
   color:var(--jpo-ink);
   font-family:var(--font-display);
   font-size:.8rem;
@@ -185,9 +185,8 @@
 /*
    LEFT FLOWERS
 
-   Keep the current larger size.
-   Keep the current vertical position.
-   Move ONLY horizontally back to the left edge.
+   Keep current size and vertical position.
+   Do not move flowers during hero photo adjustment.
 */
 
 .hero:before{
@@ -348,50 +347,93 @@
   margin:0 auto;
 }
 
+/*
+   Neutral frosted-glass treatment.
+
+   The card itself stays transparent enough for the underlying
+   page color to influence it. The brighter upper-left highlight,
+   soft outer shadow and inner edge make it read as glass rather
+   than as an opaque cream card.
+*/
+
 .card{
   position:relative;
   min-height:164px;
   padding:15px 20px 14px;
 
-  border:1px solid rgba(255,255,255,.68);
+  overflow:hidden;
+
+  border:1px solid rgba(255,255,255,.82);
   border-radius:15px;
 
   background:
     linear-gradient(
       135deg,
-      rgba(255,255,255,.26) 0%,
-      rgba(255,249,245,.15) 48%,
-      rgba(244,228,235,.11) 100%
+      rgba(255,255,255,.36) 0%,
+      rgba(255,255,255,.18) 42%,
+      rgba(255,255,255,.08) 72%,
+      rgba(255,255,255,.16) 100%
     );
 
   box-shadow:
-    0 13px 30px rgba(68,43,50,.10),
-    0 3px 10px rgba(68,43,50,.045),
-    inset 0 1px 0 rgba(255,255,255,.82),
-    inset 1px 0 0 rgba(255,255,255,.28),
-    inset 0 -1px 0 rgba(255,255,255,.12);
+    0 18px 36px rgba(65,42,47,.16),
+    0 5px 12px rgba(65,42,47,.07),
+    inset 0 1px 0 rgba(255,255,255,.98),
+    inset 1px 0 0 rgba(255,255,255,.48),
+    inset 0 -1px 0 rgba(255,255,255,.20);
 
-  -webkit-backdrop-filter:blur(21px) saturate(120%);
-  backdrop-filter:blur(21px) saturate(120%);
+  -webkit-backdrop-filter:blur(28px) saturate(130%);
+  backdrop-filter:blur(28px) saturate(130%);
 
   text-align:center;
 }
 
 .card:before{
   position:absolute;
+  z-index:0;
   inset:1px;
+
   border-radius:14px;
+
   content:"";
-  pointer-events:none;
 
   background:
+    radial-gradient(
+      circle at 22% 8%,
+      rgba(255,255,255,.36),
+      transparent 35%
+    ),
     linear-gradient(
       145deg,
-      rgba(255,255,255,.20),
-      transparent 35%,
-      transparent 74%,
-      rgba(255,255,255,.045)
+      rgba(255,255,255,.22),
+      transparent 38%,
+      transparent 70%,
+      rgba(255,255,255,.07)
     );
+
+  pointer-events:none;
+}
+
+.card:after{
+  position:absolute;
+  z-index:0;
+
+  top:0;
+  right:12%;
+  left:12%;
+
+  height:1px;
+
+  content:"";
+
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.92),
+    transparent
+  );
+
+  pointer-events:none;
 }
 
 .cardIcon,
@@ -518,14 +560,10 @@
   overflow:hidden;
 }
 
-/* bottom-left flowers remain completely removed */
-
 .footer:before{
   display:none;
   content:none;
 }
-
-/* bottom-right flowers remain */
 
 .footer:after{
   position:absolute;
@@ -921,8 +959,9 @@
     font-size:3.25rem;
   }
 
+  /* RETIREMENT is 5px farther from JPO */
   .brandSub{
-    margin-top:8px;
+    margin-top:13px;
     font-size:.7rem;
   }
 
@@ -941,8 +980,12 @@
     min-height:620px;
   }
 
+  /*
+     Pull the copy upward.
+     This creates more clean space before the photo begins.
+  */
   .heroInner{
-    padding-top:30px;
+    padding-top:8px;
   }
 
   .heroCopy{
@@ -950,46 +993,92 @@
     margin-left:0;
   }
 
+  /*
+     Full-width heading so both lines center against
+     the phone viewport rather than against a narrow column.
+  */
   .heroCopy h1{
-    max-width:530px;
+    width:100%;
+    max-width:none;
+    margin:0;
+
     font-size:clamp(2.75rem,11.5vw,4.05rem);
+    line-height:.96;
+
+    text-align:center;
   }
 
+  /*
+     Heart/divider:
+     - centered on the screen
+     - 5px below the hero heading
+     - kept immediately above the photo
+  */
   .ornament{
     width:205px;
-    margin:1rem 0;
+    min-height:12px;
+
+    margin:5px auto 0;
+
+    line-height:1;
   }
 
+  /*
+     Existing paragraph stays in its original left-side
+     treatment over the faded portion of the photo.
+  */
   .heroCopy p{
     position:relative;
     z-index:4;
+
     width:54%;
     min-width:190px;
+
+    margin-top:9px;
+
     font-size:.84rem;
     line-height:1.72;
   }
 
+  /*
+     Completely remove the middle hero CTA and phone number.
+  */
   .heroCtas{
-    position:absolute;
-    top:390px;
-    left:0;
-    flex-direction:column;
-    align-items:flex-start;
-    gap:.9rem;
+    display:none;
   }
 
+  /*
+     IMPORTANT:
+     The PHOTO SLOT is restored instead of being shifted.
+
+     This means the fade stays where it originally lived.
+     Only the image layer itself moves to the right below.
+  */
   .photoSlot{
-    top:95px;
+    top:133px;
     right:-20%;
     bottom:0;
+
     width:120%;
   }
 
+  /*
+     Move ONLY the ladies image 20% to the right.
+
+     The photoFade element is a separate layer, so it does not
+     move with this transform.
+  */
   .photoPlaceholder{
     background-size:auto 100%;
     background-position:right top;
+
+    transform:translateX(20%);
+    transform-origin:center right;
   }
 
+  /*
+     Keep the original left-side fade fixed in place.
+  */
   .photoFade{
     background:
       linear-gradient(
@@ -1007,6 +1096,9 @@
       );
   }
 
+  /*
+     Do not alter the flowers.
+  */
   .hero:before{
     top:115px;
     left:0;
@@ -1024,8 +1116,11 @@
 
   .careHeading{
     display:block;
+
     margin-bottom:13px;
+
     text-align:center;
+
     font-family:var(--font-display);
     font-size:2.15rem;
     font-weight:500;
@@ -1033,22 +1128,54 @@
 
   .cardGrid{
     grid-template-columns:1fr;
+
     width:100%;
+
     gap:11px;
   }
 
+  /*
+     Stronger glassmorphism on mobile.
+  */
   .card{
     display:grid;
     grid-template-columns:90px 1fr;
+
     min-height:0;
+
     align-items:center;
+
     padding:18px;
+
+    border:1px solid rgba(255,255,255,.88);
+    border-radius:16px;
+
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255,255,255,.34) 0%,
+        rgba(255,255,255,.16) 42%,
+        rgba(255,255,255,.08) 72%,
+        rgba(255,255,255,.15) 100%
+      );
+
+    box-shadow:
+      0 15px 34px rgba(68,43,50,.16),
+      0 4px 12px rgba(68,43,50,.07),
+      inset 0 1px 0 rgba(255,255,255,1),
+      inset 1px 0 0 rgba(255,255,255,.48),
+      inset 0 -1px 0 rgba(255,255,255,.18);
+
+    -webkit-backdrop-filter:blur(28px) saturate(135%);
+    backdrop-filter:blur(28px) saturate(135%);
+
     text-align:left;
   }
 
   .cardIcon{
     width:66px;
     height:66px;
+
     margin:0;
   }
 
@@ -1062,7 +1189,9 @@
 
   .card p{
     max-width:none;
+
     margin-top:.4rem;
+
     font-size:.78rem;
   }
 
@@ -1076,19 +1205,24 @@
 
   .homeCta h2{
     max-width:360px;
+
     font-size:2.55rem;
+
     white-space:normal;
   }
 
   .ctaOrnament{
     display:block;
+
     width:125px;
+
     margin:.55rem 0 .7rem 25px;
   }
 
   .ctaActions{
     flex-direction:column;
     align-items:flex-start;
+
     gap:.9rem;
   }
 
@@ -1098,6 +1232,7 @@
 
   .footerGrid{
     grid-template-columns:.75fr 1.25fr;
+
     gap:10px;
   }
 
@@ -1166,8 +1301,12 @@
     font-size:.79rem;
   }
 
-  .heroCtas{
-    top:375px;
+  /*
+     Slightly lower photo start on narrower phones because
+     the heading can wrap/take more vertical space.
+  */
+  .photoSlot{
+    top:128px;
   }
 
   .hero:before{
@@ -1177,6 +1316,7 @@
 
   .card{
     grid-template-columns:70px 1fr;
+
     padding:15px 13px;
   }
 
@@ -1203,6 +1343,7 @@
 
   .footerCol{
     padding:16px 0 0;
+
     border-top:1px solid rgba(81,32,109,.13);
     border-left:0;
   }
@@ -1231,7 +1372,7 @@
   }
 
   .brandSub{
-    margin-top:8px;
+    margin-top:13px;
     font-size:.72rem;
   }
 
@@ -1291,8 +1432,6 @@
     margin-top:.72rem;
   }
 
-  /* HERO IMAGE */
-
   .photoSlot{
     top:-122px;
     right:0;
@@ -1304,13 +1443,6 @@
     background-size:auto 100%;
     background-position:right top;
   }
-
-  /*
-     LEFT FLOWERS
-     Keep current 338px size.
-     Keep current top:-54px vertical position.
-     ONLY move horizontally back to the left edge.
-  */
 
   .hero:before{
     top:-54px;
@@ -1415,6 +1547,7 @@
   .footer:after{
     right:-6px;
     bottom:-2px;
+
     width:155px;
     height:100px;
   }
@@ -1422,6 +1555,7 @@
   .legal{
     margin-top:6px;
     padding-top:6px;
+
     font-size:.56rem;
   }
 }
@@ -1441,7 +1575,7 @@
   }
 
   .brandSub{
-    margin-top:8px;
+    margin-top:13px;
   }
 
   .tagline{
@@ -1469,6 +1603,7 @@
   .photoSlot{
     top:-114px;
     right:0;
+
     width:76%;
   }
 
@@ -1476,12 +1611,6 @@
     background-size:auto 100%;
     background-position:right top;
   }
-
-  /*
-     Same rule here:
-     preserve size and vertical position.
-     Only restore it to the left edge.
-  */
 
   .hero:before{
     top:-50px;
@@ -1496,6 +1625,7 @@
 
   .card{
     min-height:132px;
+
     padding-top:10px;
     padding-bottom:9px;
   }
