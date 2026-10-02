@@ -1,3 +1,27 @@
-.page { min-height: 100vh; overflow: clip; color: var(--jpo-ink); background: var(--jpo-cream); }
-.heroShell { position: relative; isolation: isolate; background: radial-gradient(circle at 76% 25%, rgba(228,194,163,.5), transparent 38%), linear-gradient(105deg,#fffaf3 0%,#fcf4e9 43%,#ead0b7 100%); }
-.heroShell::before { position: absolute; z-index: -1; inset: 0; content: ""; background: linear-gradient(90deg,rgba(255,251,245,.98) 0%,rgba(255,250,243,.84) 34%,transparent 61%),linear-gradient(0deg,var(--jpo-cream) 0%,transparent 24%); pointer-events: none; }
+.page { min-height: 100vh; overflow-x: clip; color: var(--jpo-ink); background: var(--jpo-cream); }
+.heroShell { position: relative; isolation: isolate; background: var(--jpo-cream); }
+.homeComposition { position: relative; }
+/* Footer markup is retained; scope its layout to the homepage. */
+.page > footer { padding: 28px 0 18px; }
+.page > footer::after { display: none; }
+.page > footer > div:first-child { display: flex; justify-content: space-between; align-items: center; gap: 28px; }
+.page > footer > div:first-child > div:first-child { display: grid; gap: 12px; justify-items: center; }
+.page > footer nav { display: grid; grid-template-columns: repeat(2, auto); gap: 12px 24px; font-size: clamp(12px, .8vw, 20px); }
+.page > footer > div:last-child { margin-top: 24px; padding-top: 15px; border-top: 1px solid #71338f22; font-size: 12px; }
+@media (max-width: 767px) {
+  .page > footer > div:first-child { flex-wrap: wrap; justify-content: center; text-align: center; }
+  .page > footer > div:first-child > div:first-child { width: 100%; }
+}
+
+@media (min-width: 1920px) {
+  .page > footer { padding: clamp(40px, 2.4vw, 68px) 0 30px; }
+  .page > footer > div { width: 90%; max-width: 2300px; }
+  .page > footer > div:first-child { gap: 3vw; font-size: clamp(20px, 1vw, 28px); }
+  .page > footer [aria-label="JPO Retirement"] > span:first-child { font-size: clamp(80px, 4.3vw, 120px); }
+  .page > footer [aria-label="JPO Retirement"] > span:nth-child(2) { font-size: clamp(15px, .8vw, 23px); }
+  .page > footer [aria-label="JPO Retirement"] > span:nth-child(n+3) { font-size: clamp(18px, .9vw, 26px); }
+  .page > footer nav { font-size: clamp(20px, 1vw, 28px); gap: 20px 38px; }
+  .page > footer a[href^="tel:"] { font-size: clamp(21px, 1.1vw, 30px); }
+  .page > footer a svg { width: 1.3em; height: 1.3em; }
+  .page > footer > div:last-child { font-size: clamp(16px, .8vw, 22px); margin-top: 36px; padding-top: 24px; }
+}

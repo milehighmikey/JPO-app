@@ -1,0 +1,1397 @@
+/* Homepage composition only. Shared routes retain Jpo.module.css. */
+
+.container {
+  width: 90%;
+  max-width: 2300px;
+  margin-inline: auto;
+}
+
+/* =========================================================
+   DESKTOP / SHARED
+   ========================================================= */
+
+.header {
+  padding: clamp(20px, 2.2vw, 56px) 0 0;
+}
+
+.header > div {
+  width: 92%;
+  max-width: 2360px;
+  grid-template-columns: 16% minmax(0, 1fr) 17%;
+  gap: 2%;
+  align-items: start;
+}
+
+.header [aria-label="JPO Retirement"] > span:first-child {
+  font-size: clamp(62px, 6vw, 145px);
+}
+
+.header [aria-label="JPO Retirement"] > span:nth-child(2) {
+  font-size: clamp(11px, 1vw, 24px);
+  letter-spacing: 0.48em;
+}
+
+.header [aria-label="JPO Retirement"] > span:nth-child(n + 3) {
+  display: none;
+}
+
+.header nav[aria-label="Primary navigation"] {
+  gap: clamp(12px, 1.8vw, 46px);
+  padding-top: 1.5vw;
+}
+
+.header nav[aria-label="Primary navigation"] a {
+  font-size: clamp(10px, 0.8vw, 20px);
+}
+
+.header a[href="/contact"]:has(svg),
+.heroCtas a:first-child,
+.homeCtaActions a:first-child {
+  min-height: clamp(44px, 3.3vw, 80px);
+  font-size: clamp(12px, 0.95vw, 23px);
+  padding: 0.8em 1.3em;
+  border-radius: 0.4em;
+}
+
+.header a[href^="tel:"],
+.heroCtas a[href^="tel:"],
+.homeCtaActions a[href^="tel:"] {
+  font-size: clamp(14px, 1.1vw, 27px);
+}
+
+.header a svg,
+.heroCtas a svg,
+.homeCtaActions a svg {
+  width: 1.3em;
+  height: 1.3em;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+  position: relative;
+}
+
+.hero::before {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 30vw;
+  height: 65vw;
+  content: "";
+  background: url("/flowers-left.png") left top / contain no-repeat;
+  pointer-events: none;
+}
+
+.heroInner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 48% 52%;
+  align-content: center;
+  min-height: clamp(410px, 33vw, 820px);
+  padding: 4vw 0 5vw;
+}
+
+.heroCopy,
+.intro,
+.heroCtas {
+  position: relative;
+  z-index: 4;
+  grid-column: 1;
+  margin-left: 20%;
+}
+
+.heroCopy h1 {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 3.5vw, 88px);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.06;
+  white-space: nowrap;
+}
+
+.accent {
+  color: var(--jpo-purple);
+  font-style: italic;
+}
+
+.ornament,
+.careOrnament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7em;
+  color: var(--jpo-purple);
+  font-size: clamp(22px, 1.8vw, 40px);
+}
+
+.ornament {
+  width: 70%;
+  margin: 0.65em 0;
+}
+
+.ornament::before,
+.ornament::after,
+.careOrnament::before,
+.careOrnament::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: var(--jpo-lavender);
+}
+
+.intro {
+  max-width: 28em;
+  padding-right: 8%;
+  font-size: clamp(14px, 1.05vw, 25px);
+  line-height: 1.8;
+}
+
+.heroCtas {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5em;
+  margin-top: 1.5em;
+}
+
+.photoSlot {
+  position: absolute;
+  z-index: 0;
+  top: -4vw;
+  right: -5.56%;
+  width: 64%;
+  height: calc(100% + 14vw);
+  overflow: hidden;
+}
+
+.photoPlaceholder,
+.photoFade {
+  position: absolute;
+  inset: 0;
+}
+
+.photoPlaceholder {
+  object-fit: cover;
+  object-position: center top;
+}
+
+.photoFade {
+  background:
+    linear-gradient(
+      90deg,
+      var(--jpo-cream),
+      rgba(251, 244, 235, 0.88) 9%,
+      rgba(251, 244, 235, 0.35) 24%,
+      transparent 43%
+    ),
+    linear-gradient(0deg, var(--jpo-cream), transparent 32%),
+    linear-gradient(180deg, var(--jpo-cream), transparent 18%);
+}
+
+/* =========================================================
+   CARE CARDS
+   ========================================================= */
+
+.careHighlights {
+  position: relative;
+  z-index: 5;
+  padding-bottom: calc(clamp(20px, 2vw, 45px) + 10px);
+}
+
+.careGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  width: 64%;
+  gap: clamp(14px, 2.5vw, 60px);
+}
+
+.careCard {
+  display: grid;
+  grid-template-columns: 28% minmax(0, 1fr);
+  align-items: center;
+  gap: 0.4em 0.8em;
+  padding: clamp(16px, 1.4vw, 35px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: clamp(14px, 1.2vw, 28px);
+  background: linear-gradient(
+    125deg,
+    rgba(255, 255, 255, 0.44),
+    rgba(255, 255, 255, 0.17)
+  );
+  box-shadow:
+    0 12px 28px rgba(71, 44, 58, 0.13),
+    inset 0 1px rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.careIcon {
+  display: grid;
+  place-items: center;
+  color: var(--jpo-purple);
+}
+
+.careIcon svg {
+  width: 100%;
+  max-width: 110px;
+  aspect-ratio: 1;
+}
+
+.careCard h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(20px, 1.6vw, 39px);
+  line-height: 1.15;
+}
+
+.careOrnament {
+  grid-column: 2;
+  width: 65%;
+  font-size: clamp(16px, 1.2vw, 26px);
+}
+
+.careDescription {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: clamp(12px, 0.9vw, 22px);
+  line-height: 1.75;
+}
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.homeCta {
+  position: relative;
+  z-index: 6;
+  padding: clamp(20px, 2vw, 50px) 0;
+  background: linear-gradient(100deg, #eee0ed, #f5ebf0);
+}
+
+.homeCta::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  right: 0;
+  bottom: 0;
+  width: clamp(220px, 23vw, 600px);
+  aspect-ratio: 1;
+  background: url("/flowers-bottom-right.png") right bottom / contain no-repeat;
+}
+
+.homeCtaInner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3vw;
+  width: 76%;
+}
+
+.homeCta h2 {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 2.15vw, 54px);
+  font-weight: 500;
+  line-height: 1.05;
+  text-align: center;
+}
+
+.homeCta h2 br {
+  display: none;
+}
+
+.ctaOrnament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7em;
+  width: 45%;
+  margin: 0.45em auto 0;
+  color: var(--jpo-purple);
+  font-size: clamp(20px, 1.5vw, 35px);
+}
+
+.ctaLine {
+  flex: 1;
+  height: 1px;
+  background: var(--jpo-purple);
+}
+
+.homeCtaActions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5em;
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   1024–1199 COMPACT DESKTOP
+   ========================================================= */
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .header > div {
+    grid-template-columns: 15% minmax(0, 1fr) 17%;
+    gap: 1.5%;
+  }
+
+  .header nav[aria-label="Primary navigation"] {
+    gap: 12px;
+  }
+
+  .header a[href="/contact"]:has(svg) {
+    white-space: nowrap;
+    padding-inline: 10px;
+    font-size: 11px;
+  }
+
+  .heroInner {
+    min-height: 430px;
+    grid-template-columns: 52% 48%;
+  }
+
+  .heroCopy,
+  .intro,
+  .heroCtas {
+    margin-left: 13%;
+  }
+
+  .heroCopy h1 {
+    font-size: 3.65vw;
+  }
+
+  .hero::before {
+    width: 25vw;
+    height: 65vw;
+  }
+
+  .careGrid {
+    width: 76%;
+    gap: 18px;
+  }
+
+  .careCard {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .careIcon svg {
+    width: 68px;
+  }
+
+  .careCard h2 {
+    min-height: 2.3em;
+  }
+
+  .careOrnament {
+    grid-column: 1;
+    margin-inline: auto;
+  }
+
+  .homeCtaInner {
+    width: 80%;
+    gap: 20px;
+  }
+
+  .homeCtaActions {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+/* =========================================================
+   TABLET — 426–1023
+   ========================================================= */
+
+@media (min-width: 426px) and (max-width: 1023px) {
+  .header {
+    padding-top: clamp(18px, 3vw, 30px);
+  }
+
+  .header > div {
+    width: 86%;
+    grid-template-columns: 1fr auto;
+  }
+
+  .header [aria-label="JPO Retirement"] > span:first-child {
+    font-size: clamp(62px, 16vw, 108px);
+  }
+
+  .header [aria-label="JPO Retirement"] > span:nth-child(2) {
+    margin-top: 20px;
+    font-size: clamp(10px, 2.5vw, 18px);
+  }
+
+  .header nav[aria-label="Primary navigation"],
+  .header > div > div:not([aria-label]) {
+    display: none;
+  }
+
+  .header button {
+    display: grid;
+    width: 48px;
+    height: 48px;
+    place-items: center;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .header button span,
+  .header button span::before,
+  .header button span::after {
+    display: block;
+    width: 29px;
+    height: 2px;
+    background: var(--jpo-ink);
+    content: "";
+    position: relative;
+  }
+
+  .header button span::before {
+    position: absolute;
+    top: -9px;
+  }
+
+  .header button span::after {
+    position: absolute;
+    top: 9px;
+  }
+
+  .header nav[aria-label="Mobile navigation"]:not([hidden]) {
+    display: grid;
+    position: absolute;
+    z-index: 30;
+    top: 100%;
+    inset-inline: 5%;
+    padding: 16px;
+    border-radius: 14px;
+    background: rgba(255, 250, 245, 0.97);
+    box-shadow: 0 12px 30px #51206d22;
+  }
+
+  .header nav[aria-label="Mobile navigation"] a {
+    padding: 12px;
+  }
+
+  .heroInner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    padding: 30px 0 0;
+  }
+
+  .heroCopy {
+    width: 94%;
+    margin: 0 auto;
+  }
+
+  .heroCopy h1 {
+    font-size: clamp(48px, 8.5vw, 82px);
+    line-height: 1;
+    text-align: center;
+  }
+
+  .ornament {
+    width: 38%;
+    margin: 18px auto;
+    font-size: 30px;
+  }
+
+  .intro {
+    margin: 0 auto;
+    width: 70%;
+    max-width: 32em;
+    padding: 0;
+    font-size: clamp(18px, 2.8vw, 24px);
+    line-height: 1.45;
+    text-align: center;
+  }
+
+  .heroCtas {
+    display: none;
+  }
+
+.photoSlot {
+  position: relative;
+  top: auto;
+  right: auto;
+  width: 78%;
+  height: auto;
+  aspect-ratio: 1.15;
+  margin: 12px 4% 0 auto;
+}
+
+.photoPlaceholder {
+  object-position: center 48%;
+}
+
+  .photoFade {
+    background:
+      linear-gradient(
+        180deg,
+        var(--jpo-cream) 0%,
+        rgba(251, 244, 235, 0.72) 7%,
+        transparent 23%,
+        transparent 77%,
+        rgba(251, 244, 235, 0.55) 91%,
+        var(--jpo-cream) 100%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(251, 244, 235, 0.82) 0%,
+        rgba(251, 244, 235, 0.35) 16%,
+        transparent 34%
+      );
+  }
+
+.hero::before {
+  top: 120px;
+  left: 0;
+  width: 42%;
+  height: 78%;
+  background-size: auto 100%;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+}
+
+  .careHighlights {
+    margin-top: -8px;
+    padding-bottom: 40px;
+  }
+
+  .careGrid {
+    width: 82%;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+    gap: 14px;
+  }
+
+  .careCard {
+    grid-template-columns: 22% minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    gap: 8px 22px;
+    padding: 20px;
+    border-radius: 15px;
+
+    
+  }
+
+  .careIcon {
+    grid-row: 1 / 3;
+    height: 100%;
+    border-right: 1px solid #bda0c7;
+    padding-right: 20px;
+  }
+
+  .careIcon svg {
+    width: 100%;
+    max-width: 104px;
+    background: rgba(234, 223, 240, 0.5);
+    border-radius: 50%;
+  }
+
+  .careCard h2 {
+    font-size: clamp(25px, 3.8vw, 35px);
+    line-height: 1.05;
+  }
+
+  .careOrnament {
+    display: none;
+  }
+
+  .careDescription {
+    grid-column: 2;
+    text-align: left;
+    font-size: clamp(16px, 2.3vw, 20px);
+    line-height: 1.4;
+  }
+
+  .homeCta {
+    padding: 42px 0 50px;
+    border-radius: 50% 50% 0 0 / 18px 18px 0 0;
+    background: linear-gradient(180deg, #eedfee, #fbf3f0);
+  }
+
+  .homeCtaInner {
+    width: 88%;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .homeCta h2 {
+    font-size: clamp(30px, 7.5vw, 52px);
+  }
+
+  .homeCta h2 br {
+    display: initial;
+  }
+
+  .ctaOrnament {
+    width: 65%;
+    margin-top: 10px;
+    font-size: 25px;
+  }
+
+  .homeCtaActions {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .homeCtaActions a[href="/contact"]:first-child {
+    min-height: 48px;
+    padding: 12px 28px;
+    font-size: clamp(14px, 3.6vw, 20px);
+    border-radius: 8px;
+  }
+
+  .homeCtaActions a[href^="tel:"] {
+    font-size: clamp(16px, 3.8vw, 22px);
+  }
+
+  .homeCta::after {
+    width: 36%;
+    right: -3%;
+  }
+}
+
+/* =========================================================
+   MOBILE — 320–425
+   SOURCE OF TRUTH: APPROVED MOBILE REFERENCE
+   ========================================================= */
+
+@media (max-width: 425.98px) {
+
+  /* ---------- HEADER ---------- */
+
+  .header {
+    padding: 10px 0 0;
+  }
+
+  .header > div {
+    width: 100%;
+    padding: 0 22px 0 31px;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+  }
+
+  .header [aria-label="JPO Retirement"] {
+    justify-self: start;
+    margin: 0;
+  }
+
+  .header [aria-label="JPO Retirement"] > span:first-child {
+    font-size: 63px;
+    line-height: 0.83;
+  }
+
+  .header [aria-label="JPO Retirement"] > span:nth-child(2) {
+    margin-top: 14px;
+    margin-left: 5px;
+    font-size: 8px;
+    line-height: 1;
+    letter-spacing: 0.5em;
+  }
+
+  .header nav[aria-label="Primary navigation"],
+  .header > div > div:not([aria-label]) {
+    display: none;
+  }
+
+  .header button {
+    display: grid;
+    width: 36px;
+    height: 36px;
+    margin: 5px 0 0;
+    padding: 0;
+    place-items: center;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .header button span,
+  .header button span::before,
+  .header button span::after {
+    position: relative;
+    display: block;
+    width: 27px;
+    height: 2px;
+    content: "";
+    background: var(--jpo-ink);
+  }
+
+  .header button span::before {
+    position: absolute;
+    top: -8px;
+    left: 0;
+  }
+
+  .header button span::after {
+    position: absolute;
+    top: 8px;
+    left: 0;
+  }
+
+  .header nav[aria-label="Mobile navigation"]:not([hidden]) {
+    display: grid;
+    position: absolute;
+    z-index: 30;
+    top: 100%;
+    inset-inline: 14px;
+    padding: 16px;
+    border-radius: 14px;
+    background: rgba(255, 250, 245, 0.98);
+    box-shadow: 0 12px 30px rgba(81, 32, 109, 0.14);
+  }
+
+  .header nav[aria-label="Mobile navigation"] a {
+    padding: 12px;
+  }
+
+  /* ---------- HERO ---------- */
+
+  .hero {
+    overflow: hidden;
+  }
+
+  .heroInner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 0;
+    padding: 21px 0 0;
+  }
+
+  .heroCopy {
+    z-index: 5;
+    width: 100%;
+    margin: 0;
+    padding-inline: 13px;
+  }
+
+  .heroCopy h1 {
+    margin: 0;
+    font-size: clamp(32px, 9.7vw, 41px);
+    line-height: 0.99;
+    letter-spacing: -0.045em;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .ornament {
+    width: 44%;
+    margin: 4px auto 4px;
+    gap: 8px;
+    font-size: 18px;
+  }
+
+  .intro {
+    z-index: 5;
+    width: 80%;
+    max-width: 330px;
+    margin: 0 auto;
+    padding: 0;
+    font-size: clamp(13.5px, 4vw, 16.5px);
+    line-height: 1.35;
+    text-align: center;
+  }
+
+  .heroCtas {
+    display: none;
+  }
+
+  /* ---------- HERO PHOTO ---------- */
+
+  .photoSlot {
+    position: relative;
+    z-index: 1;
+    top: auto;
+    right: auto;
+    width: 100%;
+    height: clamp(215px, 68vw, 278px);
+    margin: 8px 0 0;
+    overflow: hidden;
+    aspect-ratio: auto;
+  }
+
+  .photoPlaceholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 53% 38%;
+    transform: none;
+  }
+
+  .photoFade {
+    z-index: 2;
+    pointer-events: none;
+    background:
+      linear-gradient(
+        180deg,
+        var(--jpo-cream) 0%,
+        rgba(251, 244, 235, 0.90) 3%,
+        rgba(251, 244, 235, 0.48) 9%,
+        rgba(251, 244, 235, 0.10) 17%,
+        transparent 25%,
+        transparent 82%,
+        rgba(251, 244, 235, 0.14) 90%,
+        rgba(251, 244, 235, 0.62) 96%,
+        var(--jpo-cream) 100%
+      ),
+      linear-gradient(
+        90deg,
+        var(--jpo-cream) 0%,
+        rgba(251, 244, 235, 0.80) 5%,
+        rgba(251, 244, 235, 0.40) 13%,
+        rgba(251, 244, 235, 0.10) 23%,
+        transparent 32%
+      );
+  }
+
+  /* Reference floral spray: large, soft framing layer along the left edge. */
+  .hero::before {
+    z-index: 4;
+    top: 92px;
+    left: -48px;
+    width: 205px;
+    height: 470px;
+    background: url("/flowers-left.png") left top / contain no-repeat;
+    opacity: 0.98;
+    pointer-events: none;
+  }
+
+  /* ---------- CARE CARDS ---------- */
+
+  .careHighlights {
+    position: relative;
+    z-index: 6;
+    margin-top: -4px;
+    padding: 0 0 17px;
+  }
+
+  .careGrid {
+    width: calc(100% - 36px);
+    margin-inline: auto;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    gap: 7px;
+  }
+
+  .careCard {
+    min-height: 84px;
+    grid-template-columns: 25% minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 0 10px;
+    padding: 7px 11px 7px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.98);
+    border-radius: 12px;
+
+    background:
+      linear-gradient(
+        115deg,
+        rgba(255, 255, 255, 0.42) 0%,
+        rgba(248, 236, 235, 0.40) 45%,
+        rgba(235, 216, 221, 0.34) 100%
+      );
+
+    box-shadow:
+      0 6px 15px rgba(91, 65, 75, 0.09),
+      inset 0 1px 0 rgba(255, 255, 255, 0.92);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+  }
+
+  .careIcon {
+    grid-row: 1 / 3;
+    height: 63px;
+    align-self: center;
+    padding: 2px 9px 2px 1px;
+    border-right: 1px solid rgba(129, 87, 144, 0.48);
+  }
+
+  .careIcon svg {
+    width: 52px;
+    max-width: 100%;
+    aspect-ratio: 1;
+    background: rgba(237, 224, 240, 0.47);
+    border-radius: 50%;
+  }
+
+  .careCard h2 {
+    align-self: end;
+    margin: 0;
+    font-size: clamp(17px, 5vw, 21px);
+    font-weight: 500;
+    line-height: 1.02;
+  }
+
+  .careOrnament {
+    display: none;
+  }
+
+  .careDescription {
+    grid-column: 2;
+    align-self: start;
+    margin: 2px 0 0;
+    text-align: left;
+    font-size: clamp(9.7px, 2.9vw, 12px);
+    line-height: 1.27;
+  }
+
+  /* ---------- CTA ---------- */
+
+  .homeCta {
+    overflow: hidden;
+    min-height: 0;
+    padding: 19px 0 24px;
+    border-radius: 50% 50% 0 0 / 10px 10px 0 0;
+    background:
+      linear-gradient(
+        180deg,
+        #ead9eb 0%,
+        #f0e1ed 43%,
+        #f8efec 100%
+      );
+  }
+
+  .homeCtaInner {
+    width: 100%;
+    flex-direction: column;
+    gap: 8px;
+    padding-inline: 23px;
+  }
+
+  .homeCtaCopy {
+    width: 100%;
+  }
+
+  .homeCta h2 {
+    margin: 0;
+    font-size: clamp(25px, 7.8vw, 33px);
+    line-height: 1.01;
+  }
+
+  .homeCta h2 br {
+    display: initial;
+  }
+
+  .ctaOrnament {
+    width: 47%;
+    margin: 6px auto 0;
+    gap: 7px;
+    font-size: 18px;
+  }
+
+  .homeCtaActions {
+    width: 100%;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .homeCtaActions a[href="/contact"]:first-child {
+    width: 75%;
+    min-height: 41px;
+    padding: 8px 14px;
+    font-size: 13px;
+    border-radius: 7px;
+  }
+
+  .homeCtaActions a[href^="tel:"] {
+    font-size: 14px;
+  }
+
+  .homeCtaActions a svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .homeCta::after {
+    right: -34px;
+    bottom: -34px;
+    width: 158px;
+    height: 190px;
+    max-width: none;
+    aspect-ratio: auto;
+    background: url("/flowers-bottom-right.png") right bottom / contain no-repeat;
+    opacity: 0.98;
+    pointer-events: none;
+  }
+}
+
+/* =========================================================
+   EXTRA TUNING — 320–350
+   ========================================================= */
+
+
+@media (max-width: 425.98px) {
+  :global(.jpo-home-footer) {
+    display: none !important;
+  }
+}
+
+@media (max-width: 350px) {
+  .header > div {
+    padding-left: 27px;
+    padding-right: 17px;
+  }
+
+  .header [aria-label="JPO Retirement"] > span:first-child {
+  font-size: 72px;
+}
+
+.header [aria-label="JPO Retirement"] > span:nth-child(2) {
+  font-size: 9px;
+}
+
+  .heroInner {
+    padding-top: 8px;
+  }
+
+  .heroCopy h1 {
+    font-size: 36px;
+  }
+
+  .intro {
+    width: 82%;
+    font-size: 13px;
+  }
+
+  .photoSlot {
+    height: 320px;
+  }
+
+  .hero::before {
+    top: 88px;
+    left: -46px;
+    width: 195px;
+    height: 450px;
+  }
+
+  .homeCta::after {
+    right: -31px;
+    bottom: -31px;
+    width: 148px;
+    height: 180px;
+  }
+
+  .careGrid {
+    width: calc(100% - 30px);
+  }
+
+  .careCard {
+    min-height: 81px;
+    grid-template-columns: 24% minmax(0, 1fr);
+    padding: 6px 9px 6px 7px;
+    gap: 0 9px;
+  }
+
+  .careIcon {
+    height: 59px;
+    padding-right: 7px;
+  }
+
+  .careIcon svg {
+    width: 48px;
+  }
+
+  .careCard h2 {
+    font-size: 16.5px;
+  }
+
+  .careDescription {
+    font-size: 9.3px;
+  }
+
+  .homeCta {
+    padding-top: 17px;
+    padding-bottom: 21px;
+  }
+
+  .homeCta h2 {
+    font-size: 25px;
+  }
+}
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1920px) {
+  .careGrid {
+    width: 68%;
+  }
+
+   .photoPlaceholder {
+    object-position: center 60%;
+  }
+
+  .header [aria-label="JPO Retirement"] > span:nth-child(2) {
+    margin-top: 30px;
+  }
+
+
+  .careCard {
+    padding: clamp(28px, 1.7vw, 46px);
+    gap: 0.6em 1em;
+  }
+
+  .careIcon svg {
+    max-width: 140px;
+  }
+
+  .careCard h2 {
+    font-size: clamp(34px, 1.75vw, 48px);
+  }
+
+  .careDescription {
+    font-size: clamp(19px, 1vw, 28px);
+  }
+
+  .homeCta {
+    padding-block: clamp(42px, 2.5vw, 70px);
+  }
+
+  .homeCta h2 {
+    font-size: clamp(44px, 2.4vw, 66px);
+  }
+
+  .homeCtaActions a[href="/contact"]:first-child {
+    font-size: clamp(20px, 1.1vw, 30px);
+    min-height: 3.3em;
+  }
+
+  .homeCtaActions a[href^="tel:"] {
+    font-size: clamp(23px, 1.2vw, 32px);
+  }
+}
+
+/* =========================================================
+   MOBILE ARTWORK CORRECTION ONLY
+   Header layout, cards, CTA layout and typography above are LOCKED.
+   ========================================================= */
+@media (max-width: 425.98px) {
+  /* Caregiver photo: preserve the existing slot/layout and only refine crop/fade. */
+ 
+
+  .photoPlaceholder {
+    object-position: 54% 34%;
+    transform: scale(0.90);
+    transform-origin: right center;
+  }
+
+  .photoFade {
+    background:
+      linear-gradient(
+        to bottom,
+        var(--jpo-cream) 0%,
+        rgba(251, 244, 235, .92) 4%,
+        rgba(251, 244, 235, .62) 8%,
+        rgba(251, 244, 235, .28) 12%,
+        rgba(251, 244, 235, .08) 16%,
+        transparent 20%,
+        transparent 80%,
+        rgba(251, 244, 235, .12) 88%,
+        rgba(251, 244, 235, .58) 95%,
+        var(--jpo-cream) 100%
+      ),
+      linear-gradient(
+        to right,
+        var(--jpo-cream) 0%,
+        rgba(251, 244, 235, .88) 5%,
+        rgba(251, 244, 235, .50) 12%,
+        rgba(251, 244, 235, .14) 21%,
+        transparent 31%
+      );
+  }
+
+  /* Left floral artwork only. No hero/header/card geometry is changed. */
+  .hero::before {
+    top: 150px;
+    left: -38px;
+    width: 245px;
+    height: 430px;
+    background-position: left center;
+    background-size: contain;
+  }
+
+  /* Bottom-right floral artwork only. CTA itself remains untouched. */
+  .homeCta::after {
+    right: -26px;
+    bottom: -18px;
+    width: 205px;
+    height: 170px;
+    max-width: none;
+    aspect-ratio: auto;
+    background-position: right bottom;
+    background-size: contain;
+  }
+}
+
+@media (max-width: 350px) {
+  .hero::before {
+    left: -42px;
+    width: 225px;
+    height: 405px;
+  }
+
+  .homeCta::after {
+    right: -28px;
+    bottom: -20px;
+    width: 188px;
+    height: 158px;
+  }
+}
+
+/* =========================================================
+   JPO MOBILE FINAL ADJUSTMENTS
+   Keep all final 320–425px tuning here.
+   ========================================================= */
+
+@media (max-width: 425.98px) {
+  .photoSlot {
+    margin-top: -48px;
+  }
+
+  .photoPlaceholder {
+    object-position: 54% 20%;
+  }
+
+  .photoFade {
+    /* existing fade stays exactly as it is */
+  }
+}
+
+/* Mobile reference alignment — secondary intro */
+@media (max-width: 425.98px) {
+  .intro {
+    transform: translateY(24px);
+    position: relative;
+    z-index: 5;
+  }
+}
+
+/* Mobile reference alignment — reduce excess space above subjects */
+@media (max-width: 425.98px) {
+  .photoSlot {
+    height: 430px;
+  }
+
+  .photoPlaceholder {
+    transform: scale(0.90) translateY(-22px);
+    transform-origin: right center;
+  }
+
+  .careGrid {
+    position: relative;
+    z-index: 10;
+    margin-top: -82px;
+  }
+}
+
+/* Mobile finishing pass — photo fade + card glass blur */
+@media (max-width: 425.98px) {
+  .photoFade {
+    background:
+      linear-gradient(
+      to bottom,
+      var(--jpo-cream) 0%,
+      rgba(251, 244, 235, 0.90) 3%,
+      rgba(251, 244, 235, 0.48) 8%,
+      rgba(251, 244, 235, 0.10) 14%,
+      transparent 21%,
+      transparent 68%,
+      rgba(251, 244, 235, 0.08) 74%,
+      rgba(251, 244, 235, 0.28) 81%,
+      rgba(251, 244, 235, 0.62) 89%,
+      rgba(251, 244, 235, 0.88) 95%,
+      var(--jpo-cream) 100%
+),
+      linear-gradient(
+        to right,
+        var(--jpo-cream) 0%,
+        rgba(251, 244, 235, 0.88) 5%,
+        rgba(251, 244, 235, 0.50) 12%,
+        rgba(251, 244, 235, 0.14) 21%,
+        transparent 31%
+      );
+  }
+}
+
+@media (max-width: 425.98px) {
+  .photoPlaceholder {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 72%,
+      rgba(0, 0, 0, 0.92) 78%,
+      rgba(0, 0, 0, 0.68) 84%,
+      rgba(0, 0, 0, 0.35) 91%,
+      transparent 100%
+    );
+
+    mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 72%,
+      rgba(0, 0, 0, 0.92) 78%,
+      rgba(0, 0, 0, 0.68) 84%,
+      rgba(0, 0, 0, 0.35) 91%,
+      transparent 100%
+    );
+  }
+}
+
+/* =========================================================
+   DESKTOP FINAL IMAGE/CARD POSITIONING
+   1024 / 1440 / 2560
+   ========================================================= */
+
+
+/* 1024px */
+@media (min-width: 1024px) and (max-width: 1199px) {
+
+  
+  .photoPlaceholder {
+    object-position: center 58%;
+  }
+
+  .careGrid {
+    transform: translateY(-20px);
+    margin-bottom: 80px;
+  }
+
+  .careCard {
+    overflow: visible;
+
+    background: linear-gradient(
+    125deg,
+    rgba(255, 255, 255, 0.24),
+    rgba(255, 255, 255, 0.08)
+    );
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+}
+
+/* 1440px */
+@media (min-width: 1200px) and (max-width: 1919px) {
+  .photoPlaceholder {
+    object-position: center 65%;
+  }
+
+    .header [aria-label="JPO Retirement"] > span:nth-child(2) {
+    margin-top: 20px;
+  }
+}
+

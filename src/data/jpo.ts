@@ -1,7 +1,7 @@
 export const jpo = {
   name: "JPO Retirement",
-  phoneDisplay: "(909) 555-1234",
-  phoneHref: "tel:+19095551234",
+  phoneDisplay: "(815) 663-4233",
+  phoneHref: "tel:+18156634233",
   email: "info@jpo-retirement.com",
   addressLine1: "1234 Meadow Lane",
   addressLine2: "Riverside, CA 92501",
@@ -9,11 +9,12 @@ export const jpo = {
   hours: ["We’re here for you,", "24 hours a day,", "7 days a week."],
   navigation: [
     { label: "Home", href: "/" },
-    { label: "Our Home", href: "/our-home" },
+    
     { label: "Care & Services", href: "/care-services" },
-    { label: "Life at JPO", href: "/life-at-jpo" },
+    
     { label: "Gallery", href: "/gallery" },
     { label: "FAQ", href: "/faq" },
+    { label: "Employment", href: "/employment" },
     { label: "Contact", href: "/contact" },
   ],
 } as const;

@@ -1,8 +1,40 @@
 import Link from "next/link";
 import { jpo } from "@/data/jpo";
-import { Brand, PhoneIcon } from "./Shared";
+import { Brand, PhoneLink } from "./Shared";
 import styles from "./Jpo.module.css";
 
-function MailIcon(){return <svg className={styles.icon} viewBox="0 0 24 24" aria-hidden><path d="M3 5h18v14H3V5Zm0 1 9 8 9-8"/></svg>}
-function PinIcon(){return <svg className={styles.icon} viewBox="0 0 24 24" aria-hidden><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>}
-export function Footer(){return <footer className={styles.footer}><div className={styles.container}><div className={styles.footerGrid}><Brand footer/><div className={styles.footerCol}><p>{jpo.description}</p></div><div className={styles.footerCol}><h3>Quick links</h3><nav className={styles.quickLinks} aria-label="Footer navigation">{jpo.navigation.slice(1).map(item=><Link key={item.href} href={item.href}>{item.label}</Link>)}</nav></div><div className={styles.footerCol}><h3>Contact us</h3><div className={styles.contactList}><div className={styles.contactRow}><PhoneIcon/><a href={jpo.phoneHref}>{jpo.phoneDisplay}</a></div><div className={styles.contactRow}><MailIcon/><a href={`mailto:${jpo.email}`}>{jpo.email}</a></div><div className={styles.contactRow}><PinIcon/><p>{jpo.addressLine1}<br/>{jpo.addressLine2}</p></div></div></div><div className={styles.footerCol}><h3>Hours</h3><p>{jpo.hours.map(line=><span key={line}>{line}<br/></span>)}</p></div></div><div className={styles.legal}><span>© 2024 JPO Retirement. All rights reserved.</span><div className={styles.legalLinks}><span>Privacy Policy</span><span>Terms of Service</span></div></div></div></footer>}
+export function Footer() {
+  return (
+    <footer className={`${styles.footer} jpo-home-footer`}>
+      <div className={`${styles.container} ${styles.footerInner}`}>
+        <div className={styles.footerBrand}>
+          <Brand />
+
+          <p className={styles.footerTagline}>
+            Compassionate care. Comfort like home.
+          </p>
+        </div>
+
+        <nav className={styles.footerNav} aria-label="Footer navigation">
+          {jpo.navigation.map((item) => (
+            <Link key={item.href} href={item.href}>
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className={styles.footerContact}>
+        <PhoneLink />
+        <p>119 Saunders St.</p>
+        <p>Dalzell, Illinois</p>
+      </div>
+       </div>
+
+      <div className={`${styles.container} ${styles.footerBottom}`}>
+        <p>
+          © {new Date().getFullYear()} JPO Retirement. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  );
+}
