@@ -1,0 +1,160 @@
+/*
+ * =========================================================
+ * JPO HOMEPAGE MOTION
+ * =========================================================
+ *
+ * Motion only.
+ *
+ * This file must not control normal layout, sizing,
+ * spacing, breakpoints, typography, or artwork placement.
+ *
+ * The existing Home.module.css remains the source of truth
+ * for all responsive layouts.
+ */
+
+
+/* =========================================================
+   LEFT FLORAL PARALLAX
+   ========================================================= */
+
+.motionHero::before {
+  transform: translate3d(
+    0,
+    var(--jpo-left-flower-parallax, 0px),
+    0
+  );
+
+  will-change: transform;
+}
+
+
+/* =========================================================
+   HERO PHOTO PARALLAX
+   ========================================================= */
+
+/*
+ * We use the individual CSS "translate" property instead of
+ * transform.
+ *
+ * This is intentional.
+ *
+ * Home.module.css already uses transform on the photograph
+ * at some mobile breakpoints for its carefully tuned crop.
+ * Using translate separately means those existing transforms
+ * remain completely untouched.
+ */
+
+.motionHero
+  :global([role="img"][aria-label="Caregiver spending time with an older resident"])
+  > :global(img) {
+  translate:
+    0
+    var(--jpo-photo-parallax, 0px);
+
+  will-change: translate;
+}
+
+
+/* =========================================================
+   BOTTOM-RIGHT FLORAL PARALLAX
+   ========================================================= */
+
+.motionCta::after {
+  transform: translate3d(
+    0,
+    var(--jpo-bottom-flower-parallax, 0px),
+    0
+  );
+
+  will-change: transform;
+}
+
+
+/* =========================================================
+   CTA TEXT REVEAL
+   ========================================================= */
+
+/*
+ * Only the copy block moves.
+ *
+ * The CTA buttons remain stationary.
+ */
+
+.motionCta
+  :global(#home-cta-title) {
+  opacity: 0;
+
+  transform: translate3d(0, 28px, 0);
+
+  transition:
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 750ms ease;
+
+  will-change:
+    transform,
+    opacity;
+}
+
+
+/*
+ * The ornament immediately following the heading uses
+ * the same reveal so the heading and heart settle into
+ * position as one visual unit.
+ */
+
+.motionCta
+  :global(#home-cta-title)
+  + div {
+  opacity: 0;
+
+  transform: translate3d(0, 20px, 0);
+
+  transition:
+    transform 950ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 800ms ease;
+
+  will-change:
+    transform,
+    opacity;
+}
+
+
+/* Final CTA position */
+
+.ctaVisible
+  :global(#home-cta-title),
+.ctaVisible
+  :global(#home-cta-title)
+  + div {
+  opacity: 1;
+
+  transform: translate3d(0, 0, 0);
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .motionHero::before,
+  .motionCta::after {
+    transform: none;
+  }
+
+  .motionHero
+    :global([role="img"][aria-label="Caregiver spending time with an older resident"])
+    > :global(img) {
+    translate: none;
+  }
+
+  .motionCta
+    :global(#home-cta-title),
+  .motionCta
+    :global(#home-cta-title)
+    + div {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

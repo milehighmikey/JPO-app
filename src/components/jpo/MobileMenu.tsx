@@ -49,7 +49,7 @@ export function MobileMenu({
         ))}
 
         <Link
-          href="/contact"
+          href="/schedule-tour"
           onClick={() => setOpen(false)}
           style={
             { "--menu-index": navigation.length } as React.CSSProperties

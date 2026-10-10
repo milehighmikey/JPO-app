@@ -2,20 +2,213 @@ import type { Metadata } from "next";
 import { Header } from "@/components/jpo/Header";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = { title: "Care & Services | JPO Retirement", description: "Personalized residential care and daily support in a safe, welcoming home." };
-type IconName = "care"|"medicine"|"mobility"|"home"|"heart"|"meal"|"social"|"memory"|"night"|"shield";
-const services:{icon:IconName;title:string;description:string}[]=[
-  {icon:"care",title:"Personal Care Assistance",description:"Help with bathing, dressing, grooming, and daily routines."},{icon:"medicine",title:"Medication Reminders",description:"Timely reminders to help her stay on track and feel her best."},{icon:"mobility",title:"Mobility Support",description:"Assistance with walking, transfers, and getting around."},{icon:"home",title:"Housekeeping & Laundry",description:"Comfortable living spaces kept clean, fresh, and homey."},{icon:"heart",title:"Companionship",description:"Friendly conversation and genuine connection every day."},{icon:"meal",title:"Home-Cooked Meals",description:"Nutritious, delicious meals made fresh with love."},{icon:"social",title:"Social & Activities",description:"Engaging activities and events that bring joy and purpose."},{icon:"memory",title:"Memory & Dementia Support",description:"Specialized care in a safe, structured, and supportive setting."},{icon:"night",title:"24-Hour Supervision",description:"Care and support available around the clock."},{icon:"shield",title:"Safe & Secure Environment",description:"A peaceful home with attentive staff you can trust."},
+export const metadata: Metadata = {
+  title: "Care & Services | JPO Retirement",
+  description:
+    "Personalized residential care and daily support in a safe, welcoming home.",
+};
+type IconName =
+  | "care"
+  | "medicine"
+  | "mobility"
+  | "home"
+  | "heart"
+  | "meal"
+  | "social"
+  | "memory"
+  | "night"
+  | "shield";
+const services: { icon: IconName; title: string; description: string }[] = [
+  {
+    icon: "care",
+    title: "Personal Care Assistance",
+    description: "Help with bathing, dressing, grooming, and daily routines.",
+  },
+  {
+    icon: "medicine",
+    title: "Medication Reminders",
+    description:
+      "Timely reminders to help her stay on track and feel her best.",
+  },
+  {
+    icon: "mobility",
+    title: "Mobility Support",
+    description: "Assistance with walking, transfers, and getting around.",
+  },
+  {
+    icon: "home",
+    title: "Housekeeping & Laundry",
+    description: "Comfortable living spaces kept clean, fresh, and homey.",
+  },
+  {
+    icon: "heart",
+    title: "Companionship",
+    description: "Friendly conversation and genuine connection every day.",
+  },
+  {
+    icon: "meal",
+    title: "Home-Cooked Meals",
+    description: "Nutritious, delicious meals made fresh with love.",
+  },
+  {
+    icon: "social",
+    title: "Social & Activities",
+    description: "Engaging activities and events that bring joy and purpose.",
+  },
+  {
+    icon: "memory",
+    title: "Memory & Dementia Support",
+    description:
+      "Specialized care in a safe, structured, and supportive setting.",
+  },
+  {
+    icon: "night",
+    title: "24-Hour Supervision",
+    description: "Care and support available around the clock.",
+  },
+  {
+    icon: "shield",
+    title: "Safe & Secure Environment",
+    description: "A peaceful home with attentive staff you can trust.",
+  },
 ];
-function HeartDivider({compact=false}:{compact?:boolean}){return <div className={`${styles.divider} ${compact?styles.compactDivider:""}`} aria-hidden><span>♡</span></div>}
-function ServiceIcon({name}:{name:IconName}){
-  const paths:Record<IconName,React.ReactNode>={
-    care:<><circle cx="12" cy="6" r="3"/><path d="M6 21v-5a5 5 0 0 1 5-5h2m-7 5h5l3-3 2 2-4 5H9m8-8 1.5-1.5a2 2 0 0 1 3 3L17 18l-3-3"/></>, medicine:<><path d="M9 3h6M8 6h8l1 3v12H7V9l1-3Z"/><path d="M10 14h4m-2-2v4"/></>, mobility:<><circle cx="11" cy="4" r="2"/><path d="m10 7-1 6h6l3 6m-8-9 4 2 2-2M9 13a5 5 0 1 0 5 5"/></>, home:<><path d="m3 11 9-8 9 8M5 10v11h14V10M9 21v-7h6v7"/></>, heart:<><path d="M12 21S4 16 4 9a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 7-6 12-6 12Z"/><path d="M2 13v5l4 3m16-8v5l-4 3"/></>, meal:<><path d="M4 12h16v3a6 6 0 0 1-6 6h-4a6 6 0 0 1-6-6v-3Zm-2 0h20M8 8c-2-2 2-3 0-5m5 5c-2-2 2-3 0-5m5 5c-2-2 2-3 0-5"/></>, social:<><circle cx="12" cy="7" r="3"/><circle cx="5" cy="9" r="2.5"/><circle cx="19" cy="9" r="2.5"/><path d="M7 21v-3a5 5 0 0 1 10 0v3M1 20v-3a4 4 0 0 1 5-4m17 7v-3a4 4 0 0 0-5-4"/></>, memory:<><path d="M9 4a4 4 0 0 0-4 4 4 4 0 0 0 0 7 4 4 0 0 0 4 5m6-16a4 4 0 0 1 4 4 4 4 0 0 1 0 7 4 4 0 0 1-4 5M9 3v18m6-18v18M6 10h3m6 0h3M6 16h3m6 0h3M12 6v12"/></>, night:<><path d="M19 15a8 8 0 1 1-10-10 7 7 0 0 0 10 10Z"/><path d="m17 3 .6 1.5L19 5l-1.4.5L17 7l-.6-1.5L15 5l1.4-.5L17 3Z"/></>, shield:<><path d="M12 22s8-3 8-10V5l-8-3-8 3v7c0 7 8 10 8 10Z"/><path d="M12 16s-4-2.5-4-5a2.2 2.2 0 0 1 4-1.3 2.2 2.2 0 0 1 4 1.3c0 2.5-4 5-4 5Z"/></>,
-  }; return <span className={styles.iconCircle}><svg viewBox="0 0 24 24" aria-hidden>{paths[name]}</svg></span>
+function HeartDivider({ compact = false }: { compact?: boolean }) {
+  return (
+    <div
+      className={`${styles.divider} ${compact ? styles.compactDivider : ""}`}
+      aria-hidden
+    >
+      <span>♡</span>
+    </div>
+  );
 }
-function ServiceItem({item}:{item:(typeof services)[number]}){return <li className={styles.serviceItem}><ServiceIcon name={item.icon}/><div><h3>{item.title}</h3><p>{item.description}</p></div></li>}
-export default function CareServicesPage(){return <div className={styles.page}><Header activeHref="/care-services"/><main className={styles.main}><div className={styles.flowers} aria-hidden/><section className={styles.intro}><h1>Care centered<br/><em>around her.</em></h1>
-<HeartDivider/>
-<p>At JPO Retirement, we believe every woman deserves to feel safe, supported, and at home. Our services are designed to bring peace of mind to you and comfort to her—every single day.</p></section><section className={styles.panel} aria-labelledby="included-heading"><h2 id="included-heading">What’s Included</h2><div className={styles.serviceColumns}><ul>{services.slice(0,5).map(item=><ServiceItem key={item.title} item={item}/>)}</ul><ul>{services.slice(5).map(item=><ServiceItem key={item.title} item={item}/>)}</ul></div></section><section className={styles.personalized}><h2>Every resident is different. <em>Her care</em> should be too.</h2>
+function ServiceIcon({ name }: { name: IconName }) {
+  const paths: Record<IconName, React.ReactNode> = {
+    care: (
+      <>
+        <circle cx="12" cy="6" r="3" />
+        <path d="M6 21v-5a5 5 0 0 1 5-5h2m-7 5h5l3-3 2 2-4 5H9m8-8 1.5-1.5a2 2 0 0 1 3 3L17 18l-3-3" />
+      </>
+    ),
+    medicine: (
+      <>
+        <path d="M9 3h6M8 6h8l1 3v12H7V9l1-3Z" />
+        <path d="M10 14h4m-2-2v4" />
+      </>
+    ),
+    mobility: (
+      <>
+        <circle cx="11" cy="4" r="2" />
+        <path d="m10 7-1 6h6l3 6m-8-9 4 2 2-2M9 13a5 5 0 1 0 5 5" />
+      </>
+    ),
+    home: (
+      <>
+        <path d="m3 11 9-8 9 8M5 10v11h14V10M9 21v-7h6v7" />
+      </>
+    ),
+    heart: (
+      <>
+        <path d="M12 21S4 16 4 9a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 7-6 12-6 12Z" />
+        <path d="M2 13v5l4 3m16-8v5l-4 3" />
+      </>
+    ),
+    meal: (
+      <>
+        <path d="M4 12h16v3a6 6 0 0 1-6 6h-4a6 6 0 0 1-6-6v-3Zm-2 0h20M8 8c-2-2 2-3 0-5m5 5c-2-2 2-3 0-5m5 5c-2-2 2-3 0-5" />
+      </>
+    ),
+    social: (
+      <>
+        <circle cx="12" cy="7" r="3" />
+        <circle cx="5" cy="9" r="2.5" />
+        <circle cx="19" cy="9" r="2.5" />
+        <path d="M7 21v-3a5 5 0 0 1 10 0v3M1 20v-3a4 4 0 0 1 5-4m17 7v-3a4 4 0 0 0-5-4" />
+      </>
+    ),
+    memory: (
+      <>
+        <path d="M9 4a4 4 0 0 0-4 4 4 4 0 0 0 0 7 4 4 0 0 0 4 5m6-16a4 4 0 0 1 4 4 4 4 0 0 1 0 7 4 4 0 0 1-4 5M9 3v18m6-18v18M6 10h3m6 0h3M6 16h3m6 0h3M12 6v12" />
+      </>
+    ),
+    night: (
+      <>
+        <path d="M19 15a8 8 0 1 1-10-10 7 7 0 0 0 10 10Z" />
+        <path d="m17 3 .6 1.5L19 5l-1.4.5L17 7l-.6-1.5L15 5l1.4-.5L17 3Z" />
+      </>
+    ),
+    shield: (
+      <>
+        <path d="M12 22s8-3 8-10V5l-8-3-8 3v7c0 7 8 10 8 10Z" />
+        <path d="M12 16s-4-2.5-4-5a2.2 2.2 0 0 1 4-1.3 2.2 2.2 0 0 1 4 1.3c0 2.5-4 5-4 5Z" />
+      </>
+    ),
+  };
+  return (
+    <span className={styles.iconCircle}>
+      <svg viewBox="0 0 24 24" aria-hidden>
+        {paths[name]}
+      </svg>
+    </span>
+  );
+}
+function ServiceItem({ item }: { item: (typeof services)[number] }) {
+  return (
+    <li className={styles.serviceItem}>
+      <ServiceIcon name={item.icon} />
+      <div>
+        <h3>{item.title}</h3>
+        <p>{item.description}</p>
+      </div>
+    </li>
+  );
+}
+export default function CareServicesPage() {
+  return (
+    <div className={styles.page}>
+      <Header activeHref="/care-services" />
+      <main className={styles.main}>
+        <div className={styles.flowers} aria-hidden />
+        <section className={styles.intro}>
+          <h1>
+            Care centered
+            <br />
+            <em>around her.</em>
+          </h1>
+          <HeartDivider />
+          <p>
+            At JPO Retirement, we believe every woman deserves to feel safe,
+            supported, and at home. Our services are designed to bring peace of
+            mind to you and comfort to her—every single day.
+          </p>
+        </section>
+        <section className={styles.panel} aria-labelledby="included-heading">
+          <h2 id="included-heading">What’s Included</h2>
+          <div className={styles.serviceColumns}>
+            <ul>
+              {services.slice(0, 5).map((item) => (
+                <ServiceItem key={item.title} item={item} />
+              ))}
+            </ul>
+            <ul>
+              {services.slice(5).map((item) => (
+                <ServiceItem key={item.title} item={item} />
+              ))}
+            </ul>
+          </div>
+        </section>
+        <section className={styles.personalized}>
+          <h2>
+            Every resident is different. <em>Her care</em> should be too.
+          </h2>
 
-<p>We create personalized care plans based on her needs,<br/> preferences, and the things that make her feel most<br/> comfortable and at home.</p></section></main></div>}
+          <p>
+            We create personalized care plans based on her needs,
+            <br /> preferences, and the things that make her feel most
+            <br /> comfortable and at home.
+          </p>
+        </section>
+      </main>
+    </div>
+  );
+}

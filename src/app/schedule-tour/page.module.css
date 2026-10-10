@@ -1,0 +1,858 @@
+.page {
+  min-height: 100svh;
+  background: var(--jpo-cream);
+}
+
+.main {
+  position: relative;
+  isolation: isolate;
+  padding: 32px 24px 64px;
+}
+
+.main::before,
+.main::after {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.main::before {
+  top: 160px;
+  left: 0;
+  width: clamp(160px, 22vw, 480px);
+  height: 720px;
+  opacity: .4;
+  background-image: url('/flowers-left.png');
+}
+
+.main::after {
+  right: 0;
+  bottom: 0;
+  width: clamp(160px, 20vw, 400px);
+  aspect-ratio: 1;
+  opacity: .35;
+  background-image: url('/flowers-bottom-right.png');
+  background-position: right bottom;
+}
+
+.intro {
+  max-width: 960px;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+
+.intro h1 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 3.6vw, 64px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -.025em;
+}
+
+.intro h1 em {
+  color: var(--jpo-purple);
+}
+
+.intro p {
+  max-width: 640px;
+  margin-inline: auto;
+  line-height: 1.6;
+}
+
+.ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 200px;
+  margin: 16px auto;
+  color: var(--jpo-purple);
+  font-size: 24px;
+}
+
+.ornament::before,
+.ornament::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--jpo-lavender);
+}
+
+.panel {
+  /* Adjust this one value to tune both downward reveal animations. */
+  --tour-reveal-duration: 500ms;
+
+  width: 100%;
+  max-width: 760px;
+  margin-inline: auto;
+  padding: 32px;
+  border: 1px solid rgba(255, 255, 255, .85);
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, .44), rgba(255, 250, 244, .25));
+  box-shadow: 0 16px 40px rgba(68, 43, 50, .12), inset 0 1px 0 rgba(255, 255, 255, .8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.panel h2 {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--jpo-deep-purple);
+}
+
+.demoNotice {
+  margin-bottom: 24px;
+  padding: 12px 16px;
+  border-left: 2px solid var(--jpo-lavender);
+  background: rgba(203, 178, 216, .12);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.help {
+  margin-top: 8px;
+  color: var(--jpo-muted);
+  line-height: 1.6;
+}
+
+.calendarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-block: 24px 16px;
+}
+
+.calendarHeader h3 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.monthButton {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--jpo-lavender);
+  border-radius: 50%;
+  background: rgba(255, 250, 244, .5);
+  color: var(--jpo-purple);
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.calendar {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.calendar th {
+  padding-bottom: 8px;
+  color: var(--jpo-muted);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.calendar abbr {
+  text-decoration: none;
+}
+
+.calendar td {
+  padding: 4px;
+  text-align: center;
+}
+
+.dateButton {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  padding: 8px 0;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: rgba(255, 250, 244, .6);
+  cursor: pointer;
+}
+
+.dateButton[aria-current="date"] {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.dateButton:disabled,
+.monthButton:disabled {
+  color: var(--jpo-muted);
+  opacity: .45;
+  cursor: default;
+  background: transparent;
+}
+
+.dateButton:hover:not(:disabled),
+.monthButton:hover:not(:disabled),
+.timeButton:hover {
+  border-color: var(--jpo-purple);
+  background: rgba(203, 178, 216, .24);
+}
+
+.dateButton[aria-pressed="true"],
+.timeButton[aria-pressed="true"] {
+  color: white;
+  background: var(--jpo-deep-purple);
+  border-color: var(--jpo-deep-purple);
+}
+
+.panel button:focus-visible,
+.panel input:focus-visible,
+.panel textarea:focus-visible {
+  outline: 3px solid var(--jpo-lavender);
+  outline-offset: 2px;
+}
+
+/* Content stays inert and hidden from assistive technology while collapsed. */
+.reveal {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--tour-reveal-duration) ease-out;
+}
+
+.reveal[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+
+.revealClip {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.revealContent {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(8px);
+  padding: 24px 4px 4px;
+  margin-top: 16px;
+  border-top: 1px solid var(--jpo-lavender);
+  transition:
+    opacity var(--tour-reveal-duration) ease-out,
+    transform var(--tour-reveal-duration) ease-out,
+    visibility var(--tour-reveal-duration);
+}
+
+.reveal[data-open="true"] .revealContent {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.times {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 4px;
+}
+
+.timeButton {
+  flex: 1 1 112px;
+  min-height: 48px;
+  padding: 12px 16px;
+  border: 1px solid var(--jpo-lavender);
+  border-radius: 8px;
+  color: var(--jpo-deep-purple);
+  background: rgba(255, 250, 244, .5);
+  cursor: pointer;
+}
+
+.contactFields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  min-width: 0;
+  border: 0;
+  margin-top: 24px;
+}
+
+.contactFields label {
+  display: block;
+  min-width: 0;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.contactFields input,
+.contactFields textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  margin-top: 8px;
+  padding: 12px;
+  border: 1px solid var(--jpo-lavender);
+  border-radius: 8px;
+  color: var(--jpo-ink);
+  background: rgba(255, 250, 244, .6);
+  font: inherit;
+}
+
+.contactFields textarea {
+  resize: vertical;
+}
+
+.notes {
+  grid-column: 1 / -1;
+}
+
+.formNote {
+  margin-block: 16px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--jpo-muted);
+}
+
+.submit {
+  min-height: 48px;
+  padding: 12px 32px;
+  border: 0;
+  border-radius: 8px;
+  color: white;
+  background: linear-gradient(115deg, var(--jpo-deep-purple), var(--jpo-purple));
+  box-shadow: 0 8px 24px rgba(81, 32, 109, .16);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.submit:hover {
+  box-shadow: 0 8px 24px rgba(81, 32, 109, .28);
+}
+
+.confirmation {
+  margin-top: 24px;
+  padding: 24px;
+  border: 1px solid var(--jpo-lavender);
+  border-radius: 16px;
+  background: rgba(203, 178, 216, .16);
+  line-height: 1.6;
+}
+
+.confirmation h3 {
+  margin-bottom: 8px;
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--jpo-deep-purple);
+}
+
+.editButton {
+  min-height: 44px;
+  margin-top: 16px;
+  padding: 8px;
+  border: 0;
+  color: var(--jpo-purple);
+  background: transparent;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  .main {
+    padding: 24px 16px 48px;
+  }
+
+  .panel {
+    padding: 24px 16px;
+    border-radius: 16px;
+  }
+
+  .intro p {
+    font-size: 15px;
+  }
+
+  .contactFields {
+    grid-template-columns: 1fr;
+  }
+
+  .main::before {
+    opacity: .18;
+  }
+
+  .submit {
+    width: 100%;
+  }
+}
+
+@media (max-width: 425.98px) {
+  .main {
+    padding-inline: 8px;
+  }
+
+  .intro {
+    padding-inline: 8px;
+  }
+
+  .panel {
+    padding: 24px 8px;
+  }
+
+  .panel h2,
+  .help {
+    padding-inline: 8px;
+  }
+
+  .calendar td {
+    padding: 4px 0;
+  }
+
+  .dateButton {
+    min-height: 44px;
+  }
+
+  .calendar th {
+    font-size: 12px;
+  }
+
+  .calendarHeader {
+    gap: 8px;
+    padding-inline: 8px;
+  }
+
+  .calendarHeader h3 {
+    font-size: 28px;
+  }
+
+  .demoNotice {
+    padding: 8px;
+  }
+
+  .contactFields {
+    gap: 16px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .main {
+    padding-block: 48px 80px;
+  }
+
+  .intro {
+    max-width: 1200px;
+  }
+
+  .intro h1 {
+    font-size: 72px;
+  }
+
+  .intro p {
+    max-width: 880px;
+    font-size: 22px;
+  }
+
+  .panel {
+    max-width: 960px;
+    padding: 40px;
+    font-size: 20px;
+  }
+
+  .panel h2 {
+    font-size: 40px;
+  }
+
+  .calendarHeader h3 {
+    font-size: 36px;
+  }
+
+  .dateButton {
+    min-height: 56px;
+  }
+
+  .demoNotice,
+  .formNote,
+  .calendar th {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel {
+    --tour-reveal-duration: 0ms;
+  }
+
+  .revealContent {
+    transform: none;
+  }
+}
+
+
+/* =========================================
+   TOUR SCHEDULER — EXPANDING OVERLAY
+   ========================================= */
+
+.tourOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  pointer-events: none;
+}
+
+.tourBackdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(43, 28, 52, 0.32);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  animation: tourBackdropIn 500ms ease forwards;
+  pointer-events: auto;
+}
+
+.tourDialog {
+  --tour-width: 440px;
+
+  position: relative;
+  z-index: 1;
+  width: min(var(--tour-width), calc(100vw - 32px));
+  height: min(600px, calc(100dvh - 32px));
+  max-height: calc(100dvh - 32px);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 24px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 250, 246, 0.97),
+    rgba(243, 231, 245, 0.94)
+  );
+  box-shadow:
+    0 32px 90px rgba(42, 23, 55, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  pointer-events: auto;
+
+  /*
+   * First 500ms: grow vertically.
+   * Next 500ms: grow horizontally.
+   */
+  animation: tourPanelOpen 1000ms ease-in-out both;
+
+  transition:
+    width 500ms ease-in-out;
+}
+
+.tourDialog[data-step="contact"] {
+  --tour-width: 940px;
+}
+
+.tourDialogInner {
+  width: 100%;
+  max-height: calc(100dvh - 34px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 28px;
+  opacity: 0;
+  animation: tourContentIn 300ms ease 900ms forwards;
+}
+
+.tourDialogHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--jpo-lavender);
+}
+
+.tourDialogHeader h2 {
+  margin: 4px 0 0;
+  color: var(--jpo-deep-purple);
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.tourEyebrow {
+  margin: 0;
+  color: var(--jpo-purple);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+
+.tourClose {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--jpo-lavender);
+  border-radius: 50%;
+  color: var(--jpo-deep-purple);
+  background: rgba(255, 255, 255, 0.65);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.tourClose:hover {
+  background: rgba(203, 178, 216, 0.3);
+}
+
+.tourDialogBody {
+  display: flex;
+  gap: 32px;
+  padding-top: 24px;
+}
+
+.tourTimesPane {
+  flex: 1 1 100%;
+  min-width: 0;
+}
+
+.tourDialog[data-step="contact"] .tourTimesPane {
+  flex: 0 0 220px;
+}
+
+.tourTimesPane h3,
+.tourContactPane h3 {
+  margin: 0;
+  color: var(--jpo-deep-purple);
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.tourTimeChoices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.tourDialog[data-step="contact"] .tourTimeChoices {
+  grid-template-columns: 1fr;
+}
+
+.tourTimeChoices .timeButton {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px;
+}
+
+.tourTimeNote {
+  margin-top: 20px;
+  color: var(--jpo-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.tourContactPane {
+  flex: 1 1 0;
+  min-width: 0;
+  padding-left: 32px;
+  border-left: 1px solid var(--jpo-lavender);
+  animation: tourContactIn 500ms ease-out both;
+}
+
+.tourContactPane .contactFields {
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.tourContactPane .contactFields input,
+.tourContactPane .contactFields textarea {
+  min-height: 44px;
+}
+
+.tourContactPane .confirmation {
+  margin-top: 20px;
+}
+
+.tourDialog button:focus-visible,
+.tourDialog input:focus-visible,
+.tourDialog textarea:focus-visible {
+  outline: 3px solid var(--jpo-lavender);
+  outline-offset: 2px;
+}
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+
+@keyframes tourBackdropIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes tourPanelOpen {
+  0% {
+    width: var(--tour-origin-width);
+    height: var(--tour-origin-height);
+    max-height: var(--tour-origin-height);
+    transform: translate(
+      calc(var(--tour-origin-x) - 50vw),
+      calc(var(--tour-origin-y) - 50vh)
+    );
+    opacity: 0.85;
+  }
+
+  50% {
+    width: var(--tour-origin-width);
+    height: 380px;
+    max-height: calc(100dvh - 32px);
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+
+  100% {
+    width: min(var(--tour-width), calc(100vw - 32px));
+    height: min(600px, calc(100dvh - 32px));
+    max-height: calc(100dvh - 32px);
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes tourContentIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes tourContactIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* =========================================
+   TABLET AND MOBILE
+   ========================================= */
+
+@media (max-width: 767px) {
+  .tourDialog[data-step="contact"] {
+    --tour-width: 440px;
+  }
+
+  .tourDialogInner {
+    padding: 20px;
+  }
+
+  .tourDialogBody {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .tourDialog[data-step="contact"] .tourTimesPane {
+    flex: 0 0 auto;
+  }
+
+  .tourDialog[data-step="contact"] .tourTimeChoices {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tourContactPane {
+    padding-top: 24px;
+    padding-left: 0;
+    border-top: 1px solid var(--jpo-lavender);
+    border-left: 0;
+  }
+
+  .tourDialogHeader h2 {
+    font-size: 28px;
+  }
+
+  .tourDialog[data-step="contact"] {
+    height: auto;
+  }
+}
+
+@media (max-width: 425.98px) {
+  .tourOverlay {
+    padding: 8px;
+  }
+
+  .tourDialog {
+    width: min(var(--tour-width), calc(100vw - 16px));
+    max-height: calc(100dvh - 16px);
+    border-radius: 16px;
+  }
+
+  .tourDialogInner {
+    max-height: calc(100dvh - 18px);
+    padding: 16px;
+  }
+
+  .tourDialogHeader h2 {
+    font-size: 26px;
+  }
+
+  .tourTimeChoices {
+    grid-template-columns: 1fr;
+  }
+
+  .tourDialog[data-step="contact"] .tourTimeChoices {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tourContactPane .contactFields {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .tourBackdrop,
+  .tourDialog,
+  .tourDialogInner,
+  .tourContactPane {
+    animation: none;
+  }
+
+  .tourDialog {
+    width: min(var(--tour-width), calc(100vw - 32px));
+    height: auto;
+    max-height: calc(100dvh - 32px);
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .tourDialogInner {
+    opacity: 1;
+  }
+}
